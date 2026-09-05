@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<!--
+  REPSTARK — LAUNCH CHECKLIST
+  This site is fully built and functional but intentionally NOT publishable yet:
+  no real phone number, email, form endpoint, or domain has been provided, so
+  none of that has been faked or placeholder-filled. See REPSTARK_CONFIG below
+  for the one place to add real values — everything visible on the page reads
+  from there automatically. Missing fields simply don't render, rather than
+  showing fake info. Full list of what's still needed is in the chat where
+  this file was delivered.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+/* ============================================================
+   REPSTARK SITE CONFIGURATION — the one place to fill in real details.
+   Leave a field as "" (empty) and its element is hidden automatically
+   instead of showing fake/placeholder info.
+   ============================================================ */
+window.REPSTARK_CONFIG = {
+  phoneDisplay: "",    // e.g. "(555) 123-4567"
+  phoneHref: "",       // e.g. "+15551234567" — digits only, used in tel: links
+  email: "",           // e.g. "hello@repstark.com"
+  formEndpoint: ""     // your real Formspree endpoint, e.g. "https://formspree.io/f/abcd1234"
+};
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark only">
+<title>RepStark — Online Reputation Management</title>
+<meta name="description" content="RepStark helps businesses remove what can legitimately be removed, manage what can’t, and build a stronger online reputation. Get a free reputation audit.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://RepStark.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RepStark">
+<meta property="og:title" content="RepStark — Online Reputation Management">
+<meta property="og:description" content="Remove what can be removed. Manage what can’t. Build what should be seen.">
+<meta property="og:url" content="https://RepStark.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RepStark — Reputation Management for Local Businesses">
+<meta name="theme-color" content="#0C0E12">
+<link rel="icon" type="image/png" href="assets/repstark-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "RepStark",
+  "description": "Online reputation management — legitimate removal and correction support, monitoring, response management, review strategy, and reputation building.",
+  "url": "https://RepStark.com/",
+  "telephone": "",
+  "priceRange": "$$",
+  "areaServed": "US",
+  "makesOffer": [
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Reputation Recovery & Removal Support"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Reputation Monitoring"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Review & Response Management"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Reputation Building"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Reputation Reporting & Strategy"}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What does reputation management include?","acceptedAnswer":{"@type":"Answer","text":"Legitimate reputation recovery and correction support, monitoring, review and response management, reputation building, and regular reporting on where things stand."}},
+    {"@type":"Question","name":"How does RepStark help generate more reviews?","acceptedAnswer":{"@type":"Answer","text":"We make it simple for happy customers to leave a review — the right ask, at the right moment, through the right channel — instead of leaving it to chance."}},
+    {"@type":"Question","name":"Do you respond to negative reviews?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every review gets a timely, professional response, negative ones included. A well-handled negative review often builds more trust than no response at all."}},
+    {"@type":"Question","name":"Can RepStark help with Google Business Profiles?","acceptedAnswer":{"@type":"Answer","text":"Yes — profile completeness, accuracy, and ongoing optimization are part of the core service, not an add-on."}},
+    {"@type":"Question","name":"How long does reputation improvement take?","acceptedAnswer":{"@type":"Answer","text":"There is no universal timeline. It depends on the starting point, the type of content involved, the platform or search environment, and how quickly the relevant parties respond. We assess the situation first and set expectations from there."}},
+    {"@type":"Question","name":"Do I need to change my existing marketing?","acceptedAnswer":{"@type":"Answer","text":"No. Reputation management works alongside whatever marketing you're already running — it strengthens the trust signal that marketing depends on."}},
+    {"@type":"Question","name":"How much does RepStark cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on your business size and current reputation gaps. Start with a free audit and we'll give you a straight answer from there."}}
+  ]
+}
+</script>
+<style>
+  :root{
+    --bg:#0C0E12;
+    --bg-panel:#14171D;
+    --bg-panel-2:#1A1E26;
+    --line:#262B33;
+    --text:#F2F3F5;
+    --text-dim:#9BA1AC;
+    --text-faint:#6B7078;
+    --accent:#22AFFF;
+    --accent-bright:#58C4FF;
+    --growth:#4FD1A1;
+    --display:'Space Grotesk', sans-serif;
+    --body:'Inter', -apple-system, sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;color-scheme:dark only;background:var(--bg);}
+  body{
+    margin:0;background:var(--bg);color:var(--text);font-family:var(--body);
+    line-height:1.55;-webkit-font-smoothing:antialiased;color-scheme:dark only;
+  }
+  section{background-color:var(--bg);scroll-margin-top:76px;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+  ::selection{background:var(--accent);color:#fff;}
+  :focus-visible{outline:2px solid var(--accent-bright);outline-offset:3px;}
+
+  h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-0.01em;}
+  p{margin:0;}
+
+  /* ---------- NAV ---------- */
+  header.nav{position:sticky;top:0;z-index:100;background:rgba(12,14,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1180px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .brand{font-family:var(--display);font-weight:700;font-size:21px;color:var(--text);text-decoration:none;letter-spacing:-0.01em;}
+  nav.links{display:flex;gap:32px;font-size:14.5px;font-weight:500;color:var(--text-dim);}
+  nav.links a{text-decoration:none;transition:color .15s;margin-right:32px;}
+  nav.links a:last-child{margin-right:0;}
+  nav.links a:hover{color:var(--text);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .nav-cta{
+    font-family:var(--body);font-weight:600;font-size:14px;color:#fff;background:var(--accent);
+    padding:11px 20px;border-radius:3px;text-decoration:none;border:1px solid var(--accent);
+    transition:background .15s;white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--accent-bright);}
+  .nav-burger{display:none;flex-direction:column;justify-content:center;gap:4px;width:34px;height:34px;background:none;border:none;cursor:pointer;padding:0;}
+  .nav-burger span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:transform .2s,opacity .2s;}
+  .nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .nav-burger.open span:nth-child(2){opacity:0;}
+  .nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+  .mobile-menu{display:none;flex-direction:column;border-top:1px solid var(--line);background:var(--bg);}
+  .mobile-menu a{padding:16px 32px;font-size:15px;font-weight:500;color:var(--text-dim);text-decoration:none;border-bottom:1px solid var(--line);}
+  .mobile-menu.open{display:flex;}
+  @media(max-width:900px){nav.links{display:none;} .nav-cta{display:none;} .nav-burger{display:flex;}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 100px;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(34,175,255,0.10),transparent 65%);pointer-events:none;}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:52px;}}
+
+  h1.headline{font-size:clamp(38px,5vw,58px);line-height:1.08;font-weight:700;color:var(--text);max-width:620px;}
+  .hero p.lede{font-size:18px;line-height:1.6;color:var(--text-dim);max-width:480px;margin:26px 0 34px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--accent);color:#fff;font-weight:600;font-size:15.5px;font-family:var(--body);
+    padding:15px 26px;border-radius:3px;text-decoration:none;border:1px solid var(--accent);
+    transition:background .15s;display:inline-block;
+  }
+  .btn-primary:hover{background:var(--accent-bright);}
+  .btn-ghost{
+    color:var(--text);font-weight:600;font-size:15.5px;font-family:var(--body);
+    padding:15px 24px;border-radius:3px;text-decoration:none;border:1px solid var(--line);
+    transition:border-color .15s,background .15s;background:transparent;
+  }
+  .btn-ghost:hover{border-color:var(--text-dim);background:var(--bg-panel);}
+
+  /* Dashboard visual */
+  .dash{background:var(--bg-panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,0.6);}
+  .dash-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line);}
+  .dash-head .title{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);}
+  .dash-head .badge{font-family:var(--mono);font-size:10.5px;color:var(--text-faint);border:1px solid var(--line);padding:4px 9px;border-radius:20px;}
+  .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);}
+  @media(max-width:480px){.dash-grid{grid-template-columns:1fr;}}
+  .dash-tile{background:var(--bg-panel);padding:22px 20px;}
+  .dash-tile .tlabel{font-family:var(--mono);font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px;}
+  .dash-tile .tval{font-family:var(--display);font-size:32px;font-weight:700;color:var(--text);}
+  .dash-tile .tval.growth{color:var(--growth);}
+  .dash-tile .tsub{font-family:var(--mono);font-size:11px;color:var(--growth);margin-top:4px;}
+  .dash-trend{padding:22px 20px;border-top:1px solid var(--line);}
+  .dash-trend .tlabel{font-family:var(--mono);font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px;}
+  .dash-trend svg{width:100%;height:70px;display:block;}
+  .dash-trend path.line{fill:none;stroke:var(--growth);stroke-width:2;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);}
+  .dash.animate .dash-trend path.line{stroke-dashoffset:0;}
+  .dash-foot{padding:13px 20px;background:var(--bg-panel-2);font-family:var(--mono);font-size:10.5px;color:var(--text-faint);text-align:center;}
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  .sect{padding:96px 0;}
+  h2.sect-title{font-size:clamp(26px,3.2vw,36px);font-weight:700;line-height:1.16;color:var(--text);max-width:640px;}
+  .sect-lede{color:var(--text-dim);font-size:16.5px;line-height:1.65;max-width:600px;margin-top:16px;}
+
+  /* ---------- TRUST / PROBLEM LIST ---------- */
+  .trust-cols{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:44px;}
+  @media(max-width:860px){.trust-cols{grid-template-columns:1fr;}}
+  .problem-list{list-style:none;margin:0;padding:0;}
+  .problem-list li{padding:14px 0;border-top:1px solid var(--line);font-size:15px;color:var(--text-dim);display:flex;gap:12px;}
+  .problem-list li:last-child{border-bottom:1px solid var(--line);}
+  .problem-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px;margin-right:12px;flex-shrink:0;}
+
+  /* ---------- PROBLEM GAP ---------- */
+  .gap-block{margin-top:48px;display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+  @media(max-width:760px){.gap-block{grid-template-columns:1fr;}}
+  .gap-col{padding:32px 30px;}
+  .gap-col.a{background:var(--bg-panel);}
+  .gap-col.b{background:var(--bg-panel-2);}
+  .gap-col .glabel{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;}
+  .gap-col .gtext{font-size:16px;color:var(--text);line-height:1.55;}
+  .gap-mid{display:flex;align-items:center;justify-content:center;padding:0 22px;background:var(--bg);border-left:1px solid var(--line);border-right:1px solid var(--line);}
+  @media(max-width:760px){.gap-mid{padding:16px;border-left:none;border-right:none;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}}
+  .gap-mid span{font-family:var(--mono);font-size:12px;color:var(--accent);white-space:nowrap;}
+
+  /* ---------- SOLUTION GRID ---------- */
+  .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
+  @media(max-width:860px){.sol-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.sol-grid{grid-template-columns:1fr;}}
+  .sol-card{background:var(--bg);padding:30px 26px;transition:background .15s;}
+  .sol-card:hover{background:var(--bg-panel);}
+  .sol-card .tag{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.06em;margin-bottom:16px;}
+  .sol-card h3{font-size:19px;font-weight:600;color:var(--text);margin-bottom:9px;}
+  .sol-card p{font-size:14.5px;color:var(--text-dim);line-height:1.6;}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{margin-top:48px;border-top:1px solid var(--line);}
+  .step{display:grid;grid-template-columns:70px 1fr;gap:28px;padding:34px 0;border-bottom:1px solid var(--line);}
+  @media(max-width:600px){.step{grid-template-columns:1fr;gap:8px;}}
+  .step .snum{font-family:var(--mono);font-size:14px;color:var(--accent);}
+  .step h3{font-size:22px;font-weight:600;margin-bottom:8px;}
+  .step p{font-size:15px;color:var(--text-dim);line-height:1.65;max-width:600px;}
+  .steps-cta{margin-top:36px;}
+
+  /* ---------- ROI CALCULATOR ---------- */
+  .roi-panel{margin-top:48px;background:var(--bg-panel);border:1px solid var(--line);border-radius:8px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  @media(max-width:820px){.roi-panel{grid-template-columns:1fr;}}
+  .roi-field{margin-bottom:22px;}
+  .roi-field label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12.5px;color:var(--text-dim);margin-bottom:10px;}
+  .roi-field label .val{color:var(--text);font-weight:600;}
+  .roi-field input[type="range"]{width:100%;accent-color:var(--accent);}
+  .roi-out{background:var(--bg-panel-2);border:1px solid var(--line);border-radius:6px;padding:26px;display:flex;flex-direction:column;justify-content:center;}
+  .roi-out .rlabel{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;}
+  .roi-out .rval{font-family:var(--display);font-size:40px;font-weight:700;color:var(--growth);}
+  .roi-out .rnote{font-size:13px;color:var(--text-faint);margin-top:14px;line-height:1.5;}
+
+  /* ---------- WHO IT'S FOR ---------- */
+  .who-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;}
+  .who-pill{border:1px solid var(--line);border-radius:30px;padding:12px 22px;font-size:14.5px;color:var(--text);background:var(--bg-panel);}
+
+  /* ---------- COMPETITIVE POSITIONING ---------- */
+  .compete-list{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:16px 40px;}
+  @media(max-width:700px){.compete-list{grid-template-columns:1fr;}}
+  .compete-list li{display:flex;gap:12px;font-size:15.5px;color:var(--text);padding-bottom:16px;border-bottom:1px solid var(--line);}
+  .compete-list li .ck{color:var(--accent);font-family:var(--mono);flex-shrink:0;margin-right:12px;}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{background:var(--bg-panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:88px 0;text-align:center;}
+  .cta-band h2{font-size:clamp(28px,4vw,40px);font-weight:700;margin-bottom:16px;}
+  .cta-band p{color:var(--text-dim);font-size:16px;max-width:520px;margin:0 auto 32px;}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;color:var(--text);font-family:var(--display);font-size:17.5px;font-weight:600;padding:24px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:20px;}
+  .faq-q .plus{color:var(--accent);font-size:20px;font-family:var(--mono);transition:transform .2s;flex-shrink:0;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-a p{color:var(--text-dim);font-size:15px;line-height:1.7;padding-bottom:24px;max-width:720px;}
+
+  /* ---------- LEAD FORM ---------- */
+  .form-panel{margin-top:48px;background:var(--bg-panel);border:1px solid var(--line);border-radius:8px;padding:36px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:600px){.form-row{grid-template-columns:1fr;}}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-bottom:8px;}
+  .field input,.field textarea{
+    width:100%;background:var(--bg-panel-2);border:1px solid var(--line);border-radius:4px;
+    padding:12px 14px;font-size:14.5px;font-family:var(--body);color:var(--text);outline:none;
+    transition:border-color .15s;
+  }
+  .field input:focus,.field textarea:focus{border-color:var(--accent);}
+  .field textarea{resize:vertical;}
+  .form-submit{width:100%;background:var(--accent);border:1px solid var(--accent);color:#fff;font-weight:600;font-size:15.5px;padding:15px;border-radius:3px;cursor:pointer;font-family:var(--body);transition:background .15s;}
+  .form-submit:hover{background:var(--accent-bright);}
+  .form-submit:disabled{opacity:0.6;cursor:default;}
+  .form-status{margin-top:14px;font-size:13.5px;line-height:1.6;text-align:center;}
+  .form-status.success{color:var(--growth);}
+  .form-status.error{color:var(--accent-bright);}
+  .privacy-note{font-size:12px;color:var(--text-faint);margin-top:16px;line-height:1.6;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:60px 0 36px;border-top:1px solid var(--line);}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+  @media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+  .footer-grid h4{font-family:var(--mono);font-size:11.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-faint);margin:0 0 16px;}
+  .footer-grid ul{list-style:none;margin:0;padding:0;}
+  .footer-grid li{margin-bottom:10px;}
+  .footer-grid a{color:var(--text-dim);text-decoration:none;font-size:14px;}
+  .footer-grid a:hover{color:var(--text);}
+  .footer-brand p{color:var(--text-faint);font-size:14px;line-height:1.7;max-width:280px;margin:14px 0 0;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:26px;border-top:1px solid var(--line);font-size:12.5px;color:var(--text-faint);}
+  .footer-bottom a{text-decoration:none;color:var(--text-faint);}
+  .footer-bottom a:hover{color:var(--text-dim);}
+
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{width:126px;height:auto;}
+  .brand-mark{width:28px!important;height:28px!important;object-fit:contain;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+  .mini-note{font-size:12.5px;color:var(--text-faint);line-height:1.6;margin-top:14px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .mini-pill{font-family:var(--mono);font-size:11px;color:var(--text-dim);border:1px solid var(--line);background:var(--bg-panel);padding:8px 11px;border-radius:999px;}
+  .audit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px;}
+  .audit-card{background:var(--bg);padding:28px;}
+  .audit-card .num{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:15px;}
+  .audit-card h3{font-size:18px;margin-bottom:8px;}
+  .audit-card p{font-size:14px;color:var(--text-dim);line-height:1.6;}
+  .callout{margin-top:44px;border:1px solid rgba(34,175,255,.28);background:linear-gradient(135deg,rgba(34,175,255,.07),rgba(34,175,255,.015));padding:28px;border-radius:8px;}
+  .callout h3{font-size:22px;margin-bottom:8px;}
+  .callout p{color:var(--text-dim);max-width:720px;}
+  @media(max-width:800px){.audit-grid{grid-template-columns:1fr;}.brand img{width:116px;}}
+
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="RepStark home"><img src="assets/repstark-logo.png" alt="RepStark"></a>
+    <nav class="links" aria-label="Primary">
+      <a href="#how">How It Works</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#who">Who We Help</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="#audit">Free Reputation Audit</a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+    <a href="#how">How It Works</a>
+    <a href="#solutions">Solutions</a>
+    <a href="#who">Who We Help</a>
+    <a href="#faq">FAQ</a>
+    <a href="#audit">Free Reputation Audit</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 class="headline">Build a reputation that wins.</h1>
+      <p class="lede">Your online reputation can influence whether someone calls, books, or chooses your competitor. RepStark helps you remove what can legitimately be removed, manage what can’t, and build what should be seen.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#audit">Get My Free Reputation Audit →</a>
+        <a class="btn-ghost" href="#how">See How It Works</a>
+      </div>
+    </div>
+    <div>
+      <div class="dash" id="dash">
+        <div class="dash-head">
+          <span class="title">Reputation Dashboard</span>
+          <span class="badge">PRODUCT PREVIEW</span>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <div class="tlabel">New Reviews</div>
+            <div class="tval" data-count="12">0</div>
+            <div class="tsub">sample view</div>
+          </div>
+          <div class="dash-tile">
+            <div class="tlabel">Review Rating</div>
+            <div class="tval growth" data-count="4.6" data-decimal="1">0.0</div>
+            <div class="tsub">sample view</div>
+          </div>
+          <div class="dash-tile">
+            <div class="tlabel">Response Coverage</div>
+            <div class="tval growth" data-count="96" data-suffix="%">0%</div>
+            <div class="tsub">sample view</div>
+          </div>
+          <div class="dash-tile">
+            <div class="tlabel">Reputation Trend</div>
+            <div class="tval growth">↑ Positive</div>
+            <div class="tsub">sample view</div>
+          </div>
+        </div>
+        <div class="dash-trend">
+          <div class="tlabel">Illustrative Trend</div>
+          <svg viewBox="0 0 300 70" preserveAspectRatio="none">
+            <path class="line" d="M0,55 C30,52 45,58 60,48 C80,36 95,45 115,38 C135,30 150,40 170,28 C190,18 210,26 230,16 C250,8 270,14 300,4"/>
+          </svg>
+        </div>
+        <div class="dash-foot">Illustrative product preview — not real client data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect">
+  <div class="wrap">
+    <h2 class="sect-title">Your reputation is already selling for you.</h2>
+    <p class="sect-lede">Before someone calls, books, or buys, they check what other customers said. Whatever they find is already shaping the decision — whether or not anyone's actively managing it.</p>
+    <div class="trust-cols">
+      <div>
+        <p style="color:var(--text-dim);font-size:15px;line-height:1.7;">Most businesses treat reputation as something that just happens in the background. It doesn't have to work that way — it can be built and managed deliberately, like any other part of the business that drives revenue.</p>
+      </div>
+      <div>
+        <ul class="problem-list">
+          <li>Negative or misleading content shows up when prospects search</li>
+          <li>Important reviews or mentions go unanswered</li>
+          <li>Potentially removable content has never been assessed</li>
+          <li>Search results do not reflect the current business or person</li>
+          <li>Positive, authoritative content is too thin to compete</li>
+          <li>Reputation is managed reactively, not strategically</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" style="background:var(--bg-panel);">
+  <div class="wrap">
+    <h2 class="sect-title">A great business can still look bad online.</h2>
+    <p class="sect-lede">You can run an excellent operation while your online presence tells a different story. Potential customers see outdated reviews, unanswered complaints, and competitors with stronger social proof — even when your actual service is better.</p>
+    <div class="gap-block">
+      <div class="gap-col a">
+        <div class="glabel">How good the business actually is</div>
+        <div class="gtext">Strong service, satisfied customers, a real track record — the part that doesn't show up in a search result on its own.</div>
+      </div>
+      <div class="gap-mid"><span>THE GAP</span></div>
+      <div class="gap-col b">
+        <div class="glabel">How good it looks online</div>
+        <div class="gtext">A thin review count, an old profile photo, three unanswered complaints from last year — the part a prospect actually sees first.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect">
+  <div class="wrap">
+    <div class="eyebrow">Free reputation audit</div>
+    <h2 class="sect-title">Find out what your reputation is saying before your customers do.</h2>
+    <p class="sect-lede">We look at the public-facing picture and identify the issues and opportunities worth acting on first.</p>
+    <div class="audit-grid">
+      <div class="audit-card"><div class="num">01 · REPUTATION SCORE</div><h3>A clear starting point</h3><p>A practical view of how your current online presence looks across the areas that matter most.</p></div>
+      <div class="audit-card"><div class="num">02 · MISSED OPPORTUNITIES</div><h3>What needs attention</h3><p>Potential risks, weak signals, unresolved issues, and gaps that could affect trust or visibility.</p></div>
+      <div class="audit-card"><div class="num">03 · ACTION PLAN</div><h3>What to do next</h3><p>A prioritized set of next steps so you know what deserves attention first—not a pile of vague recommendations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="solutions">
+  <div class="wrap">
+    <div class="eyebrow">The RepStark system</div>
+    <h2 class="sect-title">Remove what can be removed. Manage what can’t. Build what should be seen.</h2>
+    <p class="sect-lede">Reputation problems are not all the same. RepStark starts with the facts, identifies the legitimate path for each issue, and then works the plan.</p>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="tag">01 · REMOVE</div><h3>Remove & Correct</h3><p>Assess negative or misleading content and pursue legitimate platform, privacy, correction, reporting, or other appropriate remedies where available.</p></div>
+      <div class="sol-card"><div class="tag">02 · MANAGE</div><h3>Monitor & Respond</h3><p>Track search results, reviews, mentions, and reputation risks. Respond professionally and keep issues from becoming surprises.</p></div>
+      <div class="sol-card"><div class="tag">03 · BUILD</div><h3>Strengthen What Shows</h3><p>Build accurate, useful, authoritative positive and neutral assets and improve legitimate review activity so the online picture better reflects reality.</p></div>
+    </div>
+    <div class="callout">
+      <h3>No magic button. A real reputation strategy.</h3>
+      <p>RepStark never promises that every link or review can be removed. When removal is not appropriate or available, the strategy shifts to management, correction where possible, and legitimate reputation building.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="how" style="background:var(--bg-panel);">
+  <div class="wrap">
+    <div class="eyebrow">The process</div>
+    <h2 class="sect-title">How RepStark works.</h2>
+    <div class="steps">
+      <div class="step"><div class="snum">01</div><div><h3>We audit</h3><p>We map the public-facing reputation, identify the highest-impact issues, and separate potentially removable problems from issues that need management or reputation building.</p></div></div>
+      <div class="step"><div class="snum">02</div><div><h3>We prioritize</h3><p>We build a practical action plan around the specific situation—what to pursue, what to monitor, what to correct, and what to strengthen.</p></div></div>
+      <div class="step"><div class="snum">03</div><div><h3>We execute & monitor</h3><p>We work the approved plan, document changes, monitor the public-facing results, and adjust as the situation develops.</p></div></div>
+    </div>
+    <div class="steps-cta"><a class="btn-primary" href="#audit">Get My Free Reputation Audit →</a></div>
+  </div>
+</section>
+
+<section class="sect">
+  <div class="wrap">
+    <h2 class="sect-title">Trust is a revenue multiplier.</h2>
+    <p class="sect-lede">Customers compare businesses before they ever pick up the phone. A stronger reputation converts more of the interest you're already generating — see roughly what that could mean for your business below.</p>
+
+    <div class="roi-panel">
+      <div>
+        <div class="roi-field">
+          <label>Average customer value <span class="val" id="valCV">$150</span></label>
+          <input type="range" id="cv" min="20" max="2000" step="10" value="150">
+        </div>
+        <div class="roi-field">
+          <label>Monthly leads / inquiries <span class="val" id="valLeads">80</span></label>
+          <input type="range" id="leads" min="5" max="1000" step="5" value="80">
+        </div>
+        <div class="roi-field">
+          <label>Current conversion rate <span class="val" id="valConv">20%</span></label>
+          <input type="range" id="conv" min="1" max="80" step="1" value="20">
+        </div>
+        <div class="roi-field">
+          <label>Illustrative conversion lift <span class="val" id="valLift">+3%</span></label>
+          <input type="range" id="lift" min="1" max="20" step="1" value="3">
+        </div>
+      </div>
+      <div class="roi-out">
+        <div class="rlabel">Illustrative revenue opportunity</div>
+        <div class="rval" id="roiResult">$360</div>
+        <div class="rnote">Illustrative estimate based on the numbers above, not a guarantee of results. Actual impact depends on your market, industry, and starting point.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="who" style="background:var(--bg-panel);">
+  <div class="wrap">
+    <h2 class="sect-title">Built for businesses that depend on trust.</h2>
+    <p class="sect-lede">RepStark can support businesses and individuals whose opportunities are affected by what appears online. We will focus our early outreach where reputation has a direct connection to trust and revenue.</p>
+    <div class="who-row">
+      <span class="who-pill">Med Spas</span>
+      <span class="who-pill">Dentists</span>
+      <span class="who-pill">Home Services</span>
+      <span class="who-pill">Auto Services</span>
+      <span class="who-pill">Professional Services</span>
+      <span class="who-pill">High-Trust Businesses</span><span class="who-pill">Individuals</span>
+    </div>
+  </div>
+</section>
+
+<section class="sect">
+  <div class="wrap">
+    <div class="eyebrow">Why now</div>
+    <h2 class="sect-title">Your competitors don’t always need to be better. They may only need to look more trustworthy online.</h2>
+    <p class="sect-lede">Reputation is part of the buying decision. A prospect may never learn how good your business is if the first page, reviews, or public information create doubt.</p>
+    <ul class="compete-list">
+      <li><span class="ck">—</span>Reputation-first strategy instead of an afterthought</li>
+      <li><span class="ck">—</span>Legitimate removal and correction paths assessed before bigger tactics</li>
+      <li><span class="ck">—</span>Proactive monitoring instead of surprise reputation damage</li>
+      <li><span class="ck">—</span>Professional response management for reviews and public feedback</li>
+      <li><span class="ck">—</span>Legitimate reputation building that strengthens what prospects see</li>
+      <li><span class="ck">—</span>Clear reporting so every action has a reason</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>See what your customers see.</h2>
+    <p>Get a free RepStark Reputation Audit and find the biggest opportunities hiding in your online reputation.</p>
+    <a class="btn-primary" href="#audit">Get My Free Reputation Audit →</a>
+  </div>
+</section>
+
+<section class="sect" id="faq">
+  <div class="wrap" style="max-width:820px;">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="sect-title">Frequently asked questions.</h2>
+    <div style="margin-top:32px;">
+      <div class="faq-item open"><button class="faq-q">What does reputation management include?<span class="plus">+</span></button><div class="faq-a"><p>RepStark can assess legitimate removal or correction paths, monitor search results and reviews, manage responses, strengthen accurate public-facing content, and report on what changes over time.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can RepStark remove negative links?<span class="plus">+</span></button><div class="faq-a"><p>Sometimes, depending on the content, platform, facts, and available policies or legal mechanisms. We assess the situation first and pursue legitimate routes where appropriate.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can you guarantee removal?<span class="plus">+</span></button><div class="faq-a"><p>No. No legitimate reputation firm should guarantee that a third-party platform, publisher, search engine, or other party will remove content it controls.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What happens when something cannot be removed?<span class="plus">+</span></button><div class="faq-a"><p>We shift the strategy to management, correction where possible, monitoring, and legitimate reputation building so the overall public-facing picture becomes stronger and more accurate.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What is included in the free audit?<span class="plus">+</span></button><div class="faq-a"><p>We review the public-facing reputation and identify the most important risks, missed opportunities, and practical next steps. The audit is designed to show you what deserves attention first.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How long does reputation improvement take?<span class="plus">+</span></button><div class="faq-a"><p>There is no universal timeline. It depends on the starting point, the type of content involved, the platforms or publishers involved, and how quickly relevant parties respond.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do you work with individuals as well as businesses?<span class="plus">+</span></button><div class="faq-a"><p>Yes. The underlying approach is the same: understand what appears publicly, identify legitimate options, manage what cannot be changed, and strengthen what should be seen.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What happens after I submit the audit?<span class="plus">+</span></button><div class="faq-a"><p>We review the information you provide, assess the public-facing reputation, and follow up with the key findings and recommended next steps. No paid commitment is required to request the audit.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="audit" style="background:var(--bg-panel);">
+  <div class="wrap" style="max-width:820px;">
+    <h2 class="sect-title">Get your free reputation audit.</h2>
+    <p class="sect-lede">Tell us what you are dealing with and we’ll identify the highest-priority reputation risks and opportunities. No cost, no obligation.</p>
+
+    <div class="mini-note">If the issue involves a specific search result, review, article, profile, or URL, include it below so the audit can be more specific.</div>
+    <form id="auditForm" class="form-panel" action="" method="POST">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="New RepStark Free Audit Request">
+      <div class="form-row">
+        <div class="field"><label for="f-name">Name</label><input type="text" id="f-name" name="Name" required autocomplete="name"></div>
+        <div class="field"><label for="f-biz">Business / Name</label><input type="text" id="f-biz" name="Business Name" required></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" name="Email" required autocomplete="email"></div>
+        <div class="field"><label for="f-phone">Phone</label><input type="tel" id="f-phone" name="Phone" autocomplete="tel"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="f-web">Website</label><input type="url" id="f-web" name="Website" placeholder="https://"></div>
+        <div class="field"><label for="f-ind">Industry</label><input type="text" id="f-ind" name="Industry" placeholder="e.g. Dental practice"></div>
+      </div>
+      <div class="field"><label for="f-gbp">Problem URL(s) / Search URL (optional)</label><input type="url" id="f-gbp" name="Problem or Search URL" placeholder="https://"></div>
+      <div class="field"><label for="f-challenge">What are you trying to fix?</label><textarea id="f-challenge" name="Biggest Challenge" rows="4" placeholder="Tell us what you are seeing online and what you want to improve."></textarea></div>
+      <button type="submit" class="form-submit" id="auditSubmit">Get My Free Reputation Audit →</button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      <div class="privacy-note">Your information is used only to prepare your audit and is never sold or shared with third parties.</div>
+    </form>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Your reputation should be working for you.</h2>
+    <p>Let's find the gaps, fix the weak points, and build a reputation that helps your business win more customers.</p>
+    <a class="btn-primary" href="#audit">Get My Free Reputation Audit →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand" aria-label="RepStark home"><img src="assets/repstark-logo.png" alt="RepStark"></a>
+        <p>Online reputation management built around legitimate recovery, proactive management, and reputation building.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#who">Who We Help</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li id="footerPhoneItem" style="display:none;"><a href="#" id="footerPhoneLink"></a></li>
+          <li id="footerEmailItem" style="display:none;"><a href="#" id="footerEmailLink"></a></li>
+          <li><a href="#audit">Free Reputation Audit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 RepStark.</span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const burger = document.getElementById('navBurger'), mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open'); mobileMenu.classList.remove('open');
+  }));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+    if (item.classList.contains('open')) a.style.maxHeight = a.scrollHeight + 'px';
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = 0; });
+      if (!isOpen) { item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+  });
+
+  // Dashboard count-up + trend draw, triggered once in view
+  function countUp(el) {
+    const target = parseFloat(el.dataset.count);
+    const decimal = parseInt(el.dataset.decimal || '0');
+    const suffix = el.dataset.suffix || '';
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const val = target * eased;
+      el.textContent = val.toFixed(decimal) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const dash = document.getElementById('dash');
+  const dio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        dash.classList.add('animate');
+        dash.querySelectorAll('[data-count]').forEach(countUp);
+        dio.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  dio.observe(dash);
+
+  // ROI calculator
+  const cv = document.getElementById('cv'), leads = document.getElementById('leads'), conv = document.getElementById('conv'), lift = document.getElementById('lift');
+  const valCV = document.getElementById('valCV'), valLeads = document.getElementById('valLeads'), valConv = document.getElementById('valConv'), valLift = document.getElementById('valLift');
+  const roiResult = document.getElementById('roiResult');
+  function fmtMoney(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+  function updateROI() {
+    const cvVal = parseFloat(cv.value), leadsVal = parseFloat(leads.value), convVal = parseFloat(conv.value), liftVal = parseFloat(lift.value);
+    valCV.textContent = fmtMoney(cvVal);
+    valLeads.textContent = leadsVal;
+    valConv.textContent = convVal + '%';
+    valLift.textContent = '+' + liftVal + '%';
+    const current = leadsVal * (convVal / 100) * cvVal;
+    const improved = leadsVal * ((convVal + liftVal) / 100) * cvVal;
+    roiResult.textContent = fmtMoney(improved - current);
+  }
+  [cv, leads, conv, lift].forEach(el => el.addEventListener('input', updateROI));
+  updateROI();
+
+  // Populate contact info + form endpoint from REPSTARK_CONFIG — single source of truth.
+  // Anything left blank in the config stays hidden rather than showing fake info.
+  (function applyConfig(){
+    const cfg = window.REPSTARK_CONFIG || {};
+    const phoneItem = document.getElementById('footerPhoneItem');
+    const phoneLink = document.getElementById('footerPhoneLink');
+    const emailItem = document.getElementById('footerEmailItem');
+    const emailLink = document.getElementById('footerEmailLink');
+
+    if (cfg.phoneDisplay && cfg.phoneHref) {
+      phoneLink.textContent = cfg.phoneDisplay;
+      phoneLink.href = 'tel:' + cfg.phoneHref;
+      phoneItem.style.display = '';
+    }
+    if (cfg.email) {
+      emailLink.textContent = cfg.email;
+      emailLink.href = 'mailto:' + cfg.email;
+      emailItem.style.display = '';
+    }
+    if (cfg.formEndpoint) {
+      document.getElementById('auditForm').action = cfg.formEndpoint;
+    }
+  })();
+
+  // Audit form submission
+  const auditForm = document.getElementById('auditForm'), auditSubmit = document.getElementById('auditSubmit'), formStatus = document.getElementById('formStatus');
+  auditForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const cfg = window.REPSTARK_CONFIG || {};
+    if (!cfg.formEndpoint) {
+      formStatus.textContent = 'This form is not connected yet — add a formEndpoint value in REPSTARK_CONFIG at the top of the page.';
+      formStatus.className = 'form-status error';
+      return;
+    }
+    auditSubmit.disabled = true;
+    auditSubmit.textContent = 'Sending…';
+    formStatus.textContent = '';
+    formStatus.className = 'form-status';
+    try {
+      const res = await fetch(auditForm.action, { method: 'POST', body: new FormData(auditForm), headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        auditForm.reset();
+        auditForm.querySelectorAll('.field, button, .privacy-note').forEach(el => el.style.display = 'none');
+        formStatus.textContent = 'Thank you — your audit request has been received. We\'ll follow up shortly.';
+        formStatus.className = 'form-status success';
+      } else { throw new Error('Submission failed'); }
+    } catch (err) {
+      formStatus.textContent = cfg.email
+        ? 'Something went wrong sending your request. Please email ' + cfg.email + ' directly.'
+        : 'Something went wrong sending your request. Please try again shortly.';
+      formStatus.className = 'form-status error';
+      auditSubmit.disabled = false;
+      auditSubmit.textContent = 'Get My Free Reputation Audit →';
+    }
+  });
+</script>
+
+</body>
+</html>

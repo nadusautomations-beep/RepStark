@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://RepStark.com/sitemap.xml
