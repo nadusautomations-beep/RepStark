@@ -4,18 +4,19 @@
 //
 // REQUIRED Vercel environment variables:
 //   ANTHROPIC_API_KEY   — from console.anthropic.com
-//   NOTION_TOKEN         — from a Notion internal integration (notion.so/my-integrations)
-//   NOTION_DATABASE_ID   — the database the integration has been shared with
+//   NOTION_TOKEN         — from the "RepStark Chatbot" internal integration
+//   NOTION_DATABASE_ID   — 51d25c1ddd7140faa760ab74148be8ff (the "Clients" database)
 //
-// REQUIRED Notion database properties (exact names and types matter):
-//   Name        — Title
-//   Email       — Email
-//   Phone       — Phone number
-//   Business    — Text
-//   Website     — URL
-//   Industry    — Text
-//   Problem     — Text
-//   Source      — Select (with an option named "Chatbot")
+// This writes into the EXISTING "Clients" database, matching its real columns:
+//   Client Name       — Title
+//   Business Name     — Text
+//   Website           — URL
+//   Primary Contact   — Text   (used for the visitor's name)
+//   Email             — Email
+//   Phone             — Phone number
+//   Industry          — Select
+//   Notes             — Text   (the reported problem is written here, prefixed
+//                                 "[Chatbot]" so it's clear where it came from)
 
 const SYSTEM_PROMPT = `You are Ava, RepStark's AI intake assistant, chatting with a visitor on the website.
 
@@ -44,16 +45,16 @@ Hard rules:
 
 const NOTION_TOOL = {
   name: "submit_intake",
-  description: "Submit the visitor's gathered intake information to RepStark's lead database once enough information has been collected.",
+  description: "Submit the visitor's gathered intake information to RepStark's Clients database once enough information has been collected.",
   input_schema: {
     type: "object",
     properties: {
       name: { type: "string", description: "The visitor's name" },
       email: { type: "string", description: "The visitor's email address" },
-      business: { type: "string", description: "Business name, if applicable" },
+      business: { type: "string", description: "Business name, if applicable — leave blank for an individual" },
       phone: { type: "string", description: "Phone number, if provided" },
       website: { type: "string", description: "Website URL, if provided" },
-      industry: { type: "string", description: "Industry, if provided" },
+      industry: { type: "string", description: "Industry, if provided (business only)" },
       problem: { type: "string", description: "Short description of their reputation issue" },
     },
     required: ["name", "email"],
@@ -61,16 +62,19 @@ const NOTION_TOOL = {
 };
 
 async function createNotionPage(fields, notionToken, databaseId) {
+  // "Client Name" is the title column. Use the business name if given, otherwise the person's name.
+  const titleText = fields.business || fields.name || "Unknown";
+
   const properties = {
-    Name: { title: [{ text: { content: fields.name || "Unknown" } }] },
+    "Client Name": { title: [{ text: { content: titleText } }] },
+    "Primary Contact": { rich_text: [{ text: { content: fields.name || "" } }] },
   };
-  if (fields.email) properties.Email = { email: fields.email };
-  if (fields.phone) properties.Phone = { phone_number: fields.phone };
-  if (fields.business) properties.Business = { rich_text: [{ text: { content: fields.business } }] };
-  if (fields.website) properties.Website = { url: fields.website };
-  if (fields.industry) properties.Industry = { rich_text: [{ text: { content: fields.industry } }] };
-  if (fields.problem) properties.Problem = { rich_text: [{ text: { content: fields.problem } }] };
-  properties.Source = { select: { name: "Chatbot" } };
+  if (fields.email) properties["Email"] = { email: fields.email };
+  if (fields.phone) properties["Phone"] = { phone_number: fields.phone };
+  if (fields.business) properties["Business Name"] = { rich_text: [{ text: { content: fields.business } }] };
+  if (fields.website) properties["Website"] = { url: fields.website };
+  if (fields.industry) properties["Industry"] = { select: { name: fields.industry } };
+  if (fields.problem) properties["Notes"] = { rich_text: [{ text: { content: `[Chatbot] ${fields.problem}` } }] };
 
   const res = await fetch("https://api.notion.com/v1/pages", {
     method: "POST",
@@ -203,3 +207,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: "Server error" });
   }
 }
+
