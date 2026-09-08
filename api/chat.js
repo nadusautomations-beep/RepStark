@@ -102,9 +102,14 @@ export default async function handler(req, res) {
     return;
   }
 
-  const anthropicKey = (process.env.ANTHROPIC_API_KEY || "").replace(/[\r\n\t\s]+/g, "");
-  const notionToken = (process.env.NOTION_TOKEN || "").replace(/[\r\n\t\s]+/g, "");
-  const notionDbId = (process.env.NOTION_DATABASE_ID || "").replace(/[\r\n\t\s]+/g, "");
+  // Strip anything outside printable ASCII — not just whitespace. This is what an
+  // HTTP header value is allowed to contain, and it protects against any stray
+  // character (invisible, smart-quote, wrong-keyboard-layout, etc.) that can sneak
+  // in during copy-paste and would otherwise crash the request with a ByteString error.
+  const cleanKey = (s) => (s || "").replace(/[^\x21-\x7E]/g, "");
+  const anthropicKey = cleanKey(process.env.ANTHROPIC_API_KEY);
+  const notionToken = cleanKey(process.env.NOTION_TOKEN);
+  const notionDbId = cleanKey(process.env.NOTION_DATABASE_ID);
 
   if (!anthropicKey) {
     res.status(500).json({ error: "Server not configured (missing ANTHROPIC_API_KEY)" });
