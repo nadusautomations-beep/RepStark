@@ -21,8 +21,7 @@ instead of showing fake/placeholder info.
 window.REPSTARK_CONFIG = {
 phoneDisplay: "", // e.g. "(555) 123-4567"
 phoneHref: "", // e.g. "+15551234567" — digits only, used in tel: links
-email: "", // e.g. "hello@repstark.com"
-formEndpoint: "https://formspree.io/f/mppzooko" // your real Formspree endpoint, e.g. "https://formspree.io/f/abcd1234"
+email: "" // e.g. "hello@repstark.com"
 };
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -616,7 +615,7 @@ footer{background:#f6f8fb;border-top:1px solid var(--line)}
 <h2 class="sect-title">Get your free reputation audit.</h2>
 <p class="sect-lede">Tell us what you are dealing with and we’ll identify the highest-priority reputation risks and opportunities. No cost, no obligation.</p>
 <div class="mini-note">If the issue involves a specific search result, review, article, profile, or URL, include it below so the audit can be more specific.</div>
-<form id="auditForm" class="form-panel" action="" method="POST">
+<form id="auditForm" class="form-panel" action="/api/submit-audit" method="POST">
 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 <input type="hidden" name="_subject" value="New RepStark Free Audit Request">
 <div class="form-row">
@@ -780,26 +779,20 @@ emailLink.textContent = cfg.email;
 emailLink.href = 'mailto:' + cfg.email;
 emailItem.style.display = '';
 }
-if (cfg.formEndpoint) {
-document.getElementById('auditForm').action = cfg.formEndpoint;
-}
 })();
-// Audit form submission
+// Audit form submission — posts to /api/submit-audit, which writes the lead
+// into the same Notion "Clients" database Ava (the chat assistant) uses.
 const auditForm = document.getElementById('auditForm'), auditSubmit = document.getElementById('auditSubmit'), formStatus = document.getElementById('formStatus');
 auditForm.addEventListener('submit', async (e) => {
 e.preventDefault();
 const cfg = window.REPSTARK_CONFIG || {};
-if (!cfg.formEndpoint) {
-formStatus.textContent = 'This form is not connected yet — add a formEndpoint value in REPSTARK_CONFIG at the top of the page.';
-formStatus.className = 'form-status error';
-return;
-}
 auditSubmit.disabled = true;
 auditSubmit.textContent = 'Sending…';
 formStatus.textContent = '';
 formStatus.className = 'form-status';
 try {
-const res = await fetch(auditForm.action, { method: 'POST', body: new FormData(auditForm), headers: { 'Accept': 'application/json' } });
+const data = Object.fromEntries(new FormData(auditForm));
+const res = await fetch(auditForm.action, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
 if (res.ok) {
 auditForm.reset();
 auditForm.querySelectorAll('.field, button, .privacy-note').forEach(el => el.style.display = 'none');

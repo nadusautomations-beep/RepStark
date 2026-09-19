@@ -18,6 +18,8 @@
 //   Notes             — Text   (the reported problem is written here, prefixed
 //                                 "[Chatbot]" so it's clear where it came from)
 
+import { cleanKey, createNotionPage } from "./_notion.js";
+
 const SYSTEM_PROMPT = `You are Ava, RepStark's AI intake assistant, chatting with a visitor on the website.
 
 RepStark helps both individuals and businesses manage their online reputation — whether someone is dealing with a personal issue (an old post, an unfair review about them personally, content shared without consent, an outdated record) or a business issue (customer reviews, search results, public complaints). Your job is the same either way: make the person feel safe, taken seriously, and confident this is handled discreetly, from the very first message.
@@ -61,52 +63,12 @@ const NOTION_TOOL = {
   },
 };
 
-async function createNotionPage(fields, notionToken, databaseId) {
-  // "Client Name" is the title column. Use the business name if given, otherwise the person's name.
-  const titleText = fields.business || fields.name || "Unknown";
-
-  const properties = {
-    "Client Name": { title: [{ text: { content: titleText } }] },
-    "Primary Contact": { rich_text: [{ text: { content: fields.name || "" } }] },
-  };
-  if (fields.email) properties["Email"] = { email: fields.email };
-  if (fields.phone) properties["Phone"] = { phone_number: fields.phone };
-  if (fields.business) properties["Business Name"] = { rich_text: [{ text: { content: fields.business } }] };
-  if (fields.website) properties["Website"] = { url: fields.website };
-  if (fields.industry) properties["Industry"] = { select: { name: fields.industry } };
-  if (fields.problem) properties["Notes"] = { rich_text: [{ text: { content: `[Chatbot] ${fields.problem}` } }] };
-
-  const res = await fetch("https://api.notion.com/v1/pages", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${notionToken}`,
-      "Notion-Version": "2022-06-28",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      parent: { database_id: databaseId },
-      properties,
-    }),
-  });
-
-  if (!res.ok) {
-    const detail = await res.text();
-    throw new Error(`Notion API error (${res.status}): ${detail}`);
-  }
-  return res.json();
-}
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
     return;
   }
 
-  // Strip anything outside printable ASCII — not just whitespace. This is what an
-  // HTTP header value is allowed to contain, and it protects against any stray
-  // character (invisible, smart-quote, wrong-keyboard-layout, etc.) that can sneak
-  // in during copy-paste and would otherwise crash the request with a ByteString error.
-  const cleanKey = (s) => (s || "").replace(/[^\x21-\x7E]/g, "");
   const anthropicKey = cleanKey(process.env.ANTHROPIC_API_KEY);
   const notionToken = cleanKey(process.env.NOTION_TOKEN);
   const notionDbId = cleanKey(process.env.NOTION_DATABASE_ID);
@@ -156,7 +118,7 @@ export default async function handler(req, res) {
       let notionResult = "ok";
       if (notionToken && notionDbId) {
         try {
-          await createNotionPage(toolUse.input, notionToken, notionDbId);
+          await createNotionPage(toolUse.input, notionToken, notionDbId, "[Chatbot]");
         } catch (err) {
           console.error("Notion write failed:", err);
           notionResult = "failed";
