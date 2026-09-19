@@ -19,6 +19,7 @@
 //                                 "[Chatbot]" so it's clear where it came from)
 
 import { cleanKey, createNotionPage } from "./_notion.js";
+import { notifySlack } from "./_slack.js";
 
 const SYSTEM_PROMPT = `You are Ava, RepStark's AI intake assistant, chatting with a visitor on the website.
 
@@ -118,7 +119,8 @@ export default async function handler(req, res) {
       let notionResult = "ok";
       if (notionToken && notionDbId) {
         try {
-          await createNotionPage(toolUse.input, notionToken, notionDbId, "[Chatbot]");
+          const page = await createNotionPage(toolUse.input, notionToken, notionDbId, "[Chatbot]");
+          await notifySlack(toolUse.input, "Chatbot (Ava)", page.url);
         } catch (err) {
           console.error("Notion write failed:", err);
           notionResult = "failed";

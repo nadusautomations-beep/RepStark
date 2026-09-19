@@ -8,6 +8,7 @@
 //   NOTION_DATABASE_ID   — the "Clients" database
 
 import { cleanKey, createNotionPage } from "./_notion.js";
+import { notifySlack } from "./_slack.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -54,7 +55,8 @@ export default async function handler(req, res) {
   };
 
   try {
-    await createNotionPage(fields, notionToken, notionDbId, "[Audit Form]");
+    const page = await createNotionPage(fields, notionToken, notionDbId, "[Audit Form]");
+    await notifySlack(fields, "Audit Form", page.url);
     res.status(200).json({ ok: true });
   } catch (err) {
     console.error("Audit form → Notion write failed:", err);
