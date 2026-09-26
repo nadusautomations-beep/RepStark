@@ -32,6 +32,27 @@ export default async function handler(req, res) {
     return;
   }
 
+  // "_loaded_at" is set client-side by the page's own JS when the form loads.
+  // A submission missing it (or arriving implausibly fast) never actually ran
+  // the page's JS — a strong signal of a bot POSTing the form fields directly
+  // rather than a real visitor filling it out. Reject silently either way, so
+  // the bot sees the same "success" response and doesn't learn to adapt.
+  const loadedAt = Number(body._loaded_at);
+  if (!loadedAt || !Number.isFinite(loadedAt) || Date.now() - loadedAt < 2000) {
+    res.status(200).json({ ok: true });
+    return;
+  }
+
+  // Known spam-campaign fingerprints seen hitting this form (Telegram/WhatsApp
+  // "outreach service" pitches, fake placeholder domains).
+  const spamPattern = /t\.me\/|wa\.me\/|no-site\.com/i;
+  const submittedText = [body["Name"], body["Business Name"], body["Biggest Challenge"], body["Problem or Search URL"]]
+    .filter(Boolean).join(" ");
+  if (spamPattern.test(submittedText)) {
+    res.status(200).json({ ok: true });
+    return;
+  }
+
   const name = (body["Name"] || "").trim();
   const email = (body["Email"] || "").trim();
   if (!name || !email) {

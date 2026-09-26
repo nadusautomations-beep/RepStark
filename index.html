@@ -618,6 +618,7 @@ footer{background:#f6f8fb;border-top:1px solid var(--line)}
 <form id="auditForm" class="form-panel" action="/api/submit-audit" method="POST">
 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 <input type="hidden" name="_subject" value="New RepStark Free Audit Request">
+<input type="hidden" id="f-loaded-at" name="_loaded_at" value="">
 <div class="form-row">
 <div class="field"><label for="f-name">Name</label><input type="text" id="f-name" name="Name" required autocomplete="name"></div>
 <div class="field"><label for="f-biz">Business / Name</label><input type="text" id="f-biz" name="Business Name" required></div>
@@ -780,6 +781,10 @@ emailLink.href = 'mailto:' + cfg.email;
 emailItem.style.display = '';
 }
 })();
+// Set only by real browsers running this script — a submission missing this
+// field never actually loaded the page's JS, a strong signal it's a bot
+// posting form fields directly rather than a real visitor.
+document.getElementById('f-loaded-at').value = Date.now();
 // Audit form submission — posts to /api/submit-audit, which writes the lead
 // into the same Notion "Clients" database Ava (the chat assistant) uses.
 const auditForm = document.getElementById('auditForm'), auditSubmit = document.getElementById('auditSubmit'), formStatus = document.getElementById('formStatus');
