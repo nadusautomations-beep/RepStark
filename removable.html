@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>What Can Actually Be Removed — RepStark</title>
+<meta name="description" content="A plain breakdown of what RepStark can legitimately get removed vs. suppressed — separately for businesses and for individuals.">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --bg-panel:#f6f8fb; --line:#e4e7ec;
+    --text:#101828; --text-dim:#5b6472; --text-faint:#98a2b3;
+    --accent:#0A7FA8; --accent-bright:#11BBEF; --growth:#1a8f5f;
+    --display:'Manrope',-apple-system,sans-serif; --body:'Inter',-apple-system,sans-serif; --mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{background:var(--bg);color-scheme:light only;}
+  body{margin:0;color:var(--text);font-family:var(--body);line-height:1.65;}
+  a{color:var(--accent);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+  header.top{padding:22px 0;border-bottom:1px solid var(--line);}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .brand img{width:118px;height:auto;display:block;}
+
+  main{padding:48px 0 40px;}
+  .eyebrow{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--accent);text-transform:uppercase;margin:0 0 10px;}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,4vw,42px);letter-spacing:-.02em;margin:0 0 16px;}
+  .lede{font-size:17px;color:var(--text-dim);max-width:620px;margin:0 0 48px;}
+
+  .group{margin-bottom:56px;}
+  .group-head{display:flex;align-items:baseline;gap:12px;margin-bottom:22px;flex-wrap:wrap;}
+  .group-head h2{font-family:var(--display);font-weight:800;font-size:25px;margin:0;}
+  .group-tag{font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.04em;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  @media(max-width:760px){.cols{grid-template-columns:1fr;}}
+  .col{background:#fff;padding:26px 24px;}
+  .col-head{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+  .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .dot.yes{background:var(--growth);}
+  .dot.no{background:var(--text-faint);}
+  .col-title{font-family:var(--display);font-weight:700;font-size:14.5px;}
+  .col ul{margin:0;padding:0;list-style:none;}
+  .col li{padding:12px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--text-dim);}
+  .col li:first-child{border-top:none;padding-top:0;}
+  .col li b{display:block;color:var(--text);font-weight:600;margin-bottom:3px;}
+
+  .video-block{margin:48px 0;padding-top:40px;border-top:1px solid var(--line);}
+  .video-block h2{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 20px;}
+  .video-block video{width:100%;max-width:640px;display:block;border-radius:12px;border:1px solid var(--line);background:#000;}
+
+  .process{margin-top:8px;}
+  .process h2{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 20px;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:760px){.steps{grid-template-columns:1fr;}}
+  .step{background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;padding:20px;}
+  .step .num{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:10px;}
+  .step h3{font-family:var(--display);font-size:15.5px;margin:0 0 6px;}
+  .step p{font-size:13.5px;color:var(--text-dim);margin:0;}
+
+  .callout{margin-top:40px;border:1px solid rgba(34,175,255,.28);background:linear-gradient(135deg,rgba(34,175,255,.07),rgba(34,175,255,.015));padding:24px 26px;border-radius:10px;}
+  .callout h3{font-family:var(--display);font-size:17px;margin:0 0 6px;}
+  .callout p{margin:0;color:var(--text-dim);font-size:14.5px;max-width:640px;}
+
+  .cta-band{margin-top:48px;text-align:center;padding:40px 24px;background:var(--bg-panel);border-radius:14px;}
+  .cta-band h2{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 8px;}
+  .cta-band p{color:var(--text-dim);margin:0 0 20px;}
+  .btn-primary{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;padding:13px 26px;border-radius:8px;}
+  .btn-primary:hover{background:var(--accent-bright);}
+
+  footer{border-top:1px solid var(--line);margin-top:64px;}
+  .footer-inner{padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--text-faint);}
+  .footer-inner a{color:var(--text-dim);text-decoration:none;}
+  .footer-inner a:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" class="brand" aria-label="RepStark home"><img src="assets/repstark-logo-transparent.png" alt="RepStark"></a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="eyebrow">Removal &amp; suppression, explained</div>
+    <h1>What can actually be removed.</h1>
+    <p class="lede">Not everything online can be deleted — and we'll never tell a client it can. Here's a plain breakdown of what's legitimately removable, what gets suppressed instead, and how each path actually works, for businesses and for individuals.</p>
+
+    <div class="group">
+      <div class="group-head">
+        <h2>For businesses</h2>
+        <span class="group-tag">reviews · search results · public records</span>
+      </div>
+      <div class="cols">
+        <div class="col">
+          <div class="col-head"><span class="dot yes"></span><span class="col-title">Removable</span></div>
+          <ul>
+            <li><b>Fake or policy-violating reviews</b>Not a real customer, posted by a competitor, incentivized/paid, or breaking the platform's own content rules (hate speech, profanity, off-topic). Flagged directly, citing the specific policy it violates.</li>
+            <li><b>False or defamatory statements</b>A factually untrue claim — a fabricated incident, a false accusation, a false statement about licensing or certification. Pursued through a formal removal request or a legal letter.</li>
+            <li><b>Outdated or inaccurate business records</b>Old complaints resolved long ago, incorrect business details still indexed, directory listings carrying wrong or stale information.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="col-head"><span class="dot no"></span><span class="col-title">Not removable — but manageable</span></div>
+          <ul>
+            <li><b>A genuine negative review</b>A real customer's honest opinion — "the wait was too long," "I didn't like the price." No platform deletes a real opinion, and no legitimate firm should promise that. We respond to it professionally and build enough accurate, recent, positive content that it stops being what people see first.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-head">
+        <h2>For individuals</h2>
+        <span class="group-tag">records · doxxing · impersonation</span>
+      </div>
+      <div class="cols">
+        <div class="col">
+          <div class="col-head"><span class="dot yes"></span><span class="col-title">Removable</span></div>
+          <ul>
+            <li><b>Outdated arrest records &amp; mugshots</b>Many booking-record and mugshot sites are legally required to remove these on request — especially when charges were dropped, expunged, or the case was resolved long ago.</li>
+            <li><b>Doxxed personal information</b>Home address, phone number, or family details posted publicly without consent. Reported to the platform and, depending on the state, may qualify for removal under privacy law.</li>
+            <li><b>Fake or manipulated screenshots</b>Fabricated quotes, doctored DMs, or messages attributed to someone that they never actually sent. Reported as impersonation or fabricated content.</li>
+            <li><b>False or defamatory statements</b>Same standard as the business side — a claim that's factually untrue, pursued through a formal request or letter.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="col-head"><span class="dot no"></span><span class="col-title">Not removable — but manageable</span></div>
+          <ul>
+            <li><b>Something real, just old or out of context</b>An old clip, a past mistake that's already been addressed. Platforms won't delete true content just because it's unflattering now. We bury it under new, accurate, positive content — and where it actually helps, a short public context post.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-block">
+      <div class="eyebrow">See it in 20 seconds</div>
+      <h2>What this actually looks like for an individual.</h2>
+      <video controls preload="metadata" poster="assets/repstark-mark-x400.jpg">
+        <source src="assets/repstark-ad-individual-20s.mp4" type="video/mp4">
+        Your browser doesn't support embedded video — <a href="assets/repstark-ad-individual-20s.mp4">download it here</a> instead.
+      </video>
+    </div>
+
+    <div class="process">
+      <h2>How we actually decide which bucket something's in</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="num">01 · AUDIT</div>
+          <h3>Find what's actually there</h3>
+          <p>We review what's showing up publicly and sort each item into removable, false/defamatory, or genuine-but-unflattering.</p>
+        </div>
+        <div class="step">
+          <div class="num">02 · PURSUE</div>
+          <h3>Take the real path</h3>
+          <p>Platform policy report, formal removal request, or legal letter — whichever actually applies to that specific item.</p>
+        </div>
+        <div class="step">
+          <div class="num">03 · SUPPRESS</div>
+          <h3>Bury what can't be deleted</h3>
+          <p>For anything that doesn't qualify for removal, we build and strengthen content so it's no longer the first thing people find.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>No magic button.</h3>
+      <p>If removal isn't legitimately available for something, we say so directly instead of promising it anyway — and shift straight to making sure it's not the first thing a customer or anyone else finds.</p>
+    </div>
+
+    <div class="cta-band">
+      <h2>Not sure which bucket your situation falls into?</h2>
+      <p>The free audit tells you exactly that — no cost, no obligation.</p>
+      <a class="btn-primary" href="index.html#audit">Get My Free Reputation Audit →</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 RepStark.</span>
+    <span><a href="index.html">← Back to RepStark</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
