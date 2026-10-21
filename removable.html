@@ -50,7 +50,11 @@
   .col li:first-child{border-top:none;padding-top:0;}
   .col li b{display:block;color:var(--text);font-weight:600;margin-bottom:3px;}
 
-  .process{margin-top:8px;border-top:1px solid var(--line);padding-top:36px;}
+  .video-block{margin:48px 0;padding-top:40px;border-top:1px solid var(--line);}
+  .video-block h2{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 20px;}
+  .video-block video{width:100%;max-width:640px;display:block;border-radius:12px;border:1px solid var(--line);background:#000;}
+
+  .process{margin-top:8px;}
   .process h2{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 20px;}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   @media(max-width:760px){.steps{grid-template-columns:1fr;}}
@@ -134,6 +138,15 @@
           </ul>
         </div>
       </div>
+    </div>
+
+    <div class="video-block">
+      <div class="eyebrow">See it in 20 seconds</div>
+      <h2>What this actually looks like for an individual.</h2>
+      <video controls preload="metadata" poster="assets/repstark-mark-x400.jpg">
+        <source src="assets/repstark-ad-individual-20s.mp4" type="video/mp4">
+        Your browser doesn't support embedded video — <a href="assets/repstark-ad-individual-20s.mp4">download it here</a> instead.
+      </video>
     </div>
 
     <div class="process">
