@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Ad Creative Reference — RepStark</title>
+<meta name="description" content="RepStark ad creative reference — video spots and case studies for the individual-reputation line.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-panel:#f6f8fb; --line:#e4e7ec;
+  --text:#101828; --text-dim:#5b6472; --text-faint:#98a2b3;
+  --accent:#0A7FA8; --accent-bright:#11BBEF;
+  --display:'Manrope',-apple-system,sans-serif; --body:'Inter',-apple-system,sans-serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;}
+html,body{background:var(--bg);color-scheme:light only;}
+body{
+  margin:0; background:var(--bg); color:var(--text); font-family:var(--body);
+  line-height:1.6;
+}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+a{color:var(--accent);}
+
+header.top{padding:22px 0;border-bottom:1px solid var(--line);}
+header.top .inner{max-width:1040px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;}
+header.top .wordmark{height:24px;width:auto;flex-shrink:0;display:block;}
+header.top .tag{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--text-faint);letter-spacing:.03em;text-align:right;}
+
+.intro{padding:48px 0 32px;}
+.eyebrow{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.07em;color:var(--accent);text-transform:uppercase;margin:0 0 12px;}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4vw,38px);letter-spacing:-.02em;margin:0 0 14px;}
+.intro p{font-size:16px;color:var(--text-dim);max-width:62ch;margin:0;}
+
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px;}
+.stat{display:flex;flex-direction:column;gap:2px;}
+.stat b{font-family:var(--display);font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;}
+.stat span{font-size:12.5px;color:var(--text-faint);}
+
+.platforms{padding:32px 0 44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.platforms .eyebrow{margin-bottom:6px;text-align:center;}
+.platforms h2{font-family:var(--display);font-weight:800;font-size:18px;margin:0 0 4px;text-align:center;}
+.platforms .sub{font-size:13.5px;color:var(--text-dim);margin:0 auto;max-width:52ch;text-align:center;}
+
+.hub-diagram{position:relative;width:100%;max-width:880px;margin:36px auto 0;aspect-ratio:960/420;}
+.hub-diagram svg{position:absolute;inset:0;width:100%;height:100%;}
+.hub-diagram .connector{fill:none;stroke:var(--line);stroke-width:2;}
+.hub-node{position:absolute;left:50%;top:10%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;}
+.hub-node .circle{width:68px;height:68px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;padding:14px;box-shadow:0 4px 14px rgba(10,127,168,.18);}
+.hub-node .circle img{width:100%;height:100%;object-fit:contain;}
+.hub-node .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--accent);text-transform:uppercase;white-space:nowrap;}
+
+.mid-node{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;}
+.mid-node .circle{width:56px;height:56px;border-radius:50%;background:var(--bg);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 14px rgba(16,24,40,.12);}
+.mid-node .label{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--text-faint);text-transform:uppercase;white-space:nowrap;}
+
+.plat-node{position:absolute;top:90%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;}
+.plat-node .icon{width:50px;height:50px;border-radius:13px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(16,24,40,.14);background:var(--bg);}
+.plat-node .icon img{width:100%;height:100%;object-fit:cover;display:block;}
+.plat-node .icon.badge{color:#fff;font-weight:700;font-size:17px;}
+.plat-node .label{font-size:11.5px;color:var(--text-dim);font-weight:600;white-space:nowrap;}
+
+@media(max-width:700px){
+  .hub-diagram{aspect-ratio:960/620;max-width:420px;}
+  .hub-node .circle{width:44px;height:44px;padding:9px;}
+  .hub-node .label{font-size:9px;}
+  .mid-node .circle{width:38px;height:38px;font-size:17px;}
+  .mid-node .label{font-size:8px;}
+  .plat-node .icon{width:34px;height:34px;border-radius:9px;}
+  .plat-node .label{display:none;}
+}
+@media(max-width:420px){
+  .hub-diagram{aspect-ratio:960/680;}
+  .plat-node .icon{width:29px;height:29px;}
+}
+
+section.group{margin-top:48px;}
+.group-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:22px;}
+.group-head h2{font-family:var(--display);font-weight:800;font-size:21px;margin:0;}
+.group-head .count{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;}
+.card{background:var(--bg-panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;}
+.card .media{width:100%;aspect-ratio:9/16;background:#000;display:block;object-fit:cover;}
+.card.wide .media{aspect-ratio:16/9;}
+.card .meta{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;min-width:0;}
+.card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--accent);text-transform:uppercase;}
+.card h3{font-family:var(--display);font-size:14.5px;font-weight:700;margin:0;}
+.card p{font-size:12.5px;color:var(--text-dim);margin:0;}
+.card .fmt{margin-top:6px;font-family:var(--mono);font-size:10.5px;color:var(--text-faint);}
+
+.imgbtn{all:unset;cursor:zoom-in;display:block;}
+.imgbtn img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;background:#000;}
+
+footer.bottom{margin:64px 0 60px;padding-top:28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+footer.bottom p{margin:0;font-size:13px;color:var(--text-faint);}
+footer.bottom a{font-size:13.5px;font-weight:600;text-decoration:none;}
+footer.bottom a:hover{color:var(--accent-bright);}
+
+.lightbox{position:fixed;inset:0;background:rgba(5,9,15,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:24px;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:min(92vw,520px);max-height:88vh;border-radius:8px;object-fit:contain;}
+.lightbox-close{all:unset;position:absolute;top:18px;right:18px;color:#fff;font-family:var(--mono);font-size:13px;cursor:pointer;padding:8px 12px;border:1px solid rgba(255,255,255,.3);border-radius:6px;}
+
+@media(max-width:480px){
+  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;}
+  header.top .tag{display:none;}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a href="index.html"><img class="wordmark" src="assets/repstark-logo-transparent.png" alt="RepStark"></a>
+    <span class="tag">AD CREATIVE<br>REFERENCE</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="intro">
+    <div class="eyebrow">Internal reference — not for distribution</div>
+    <h1>Every ad asset, in one place.</h1>
+    <p>Six case-study stills and seven video spots, built for RepStark's individual-reputation line. Everything below is final creative — play any video in place, click any still to view it full size.</p>
+    <div class="stats">
+      <div class="stat"><b>7</b><span>Video spots</span></div>
+      <div class="stat"><b>6</b><span>Case study stills</span></div>
+      <div class="stat"><b>7</b><span>Platforms covered</span></div>
+    </div>
+  </div>
+
+  <div class="platforms">
+    <div class="eyebrow">Where this applies</div>
+    <h2>What professionals and individuals use RepStark for</h2>
+    <p class="sub">Every platform below is somewhere a reputation problem can start — and somewhere a fix has to be reported through.</p>
+
+    <div class="hub-diagram">
+      <svg viewBox="0 0 960 340" preserveAspectRatio="none" aria-hidden="true">
+        <path class="connector" d="M 480 68 C 480 105 480 105 480 142"/>
+        <path class="connector" d="M 480 198 C 480 240 70 240 70 281"/>
+        <path class="connector" d="M 480 198 C 480 240 206.67 240 206.67 281"/>
+        <path class="connector" d="M 480 198 C 480 240 343.33 240 343.33 281"/>
+        <path class="connector" d="M 480 198 C 480 240 480 240 480 281"/>
+        <path class="connector" d="M 480 198 C 480 240 616.67 240 616.67 281"/>
+        <path class="connector" d="M 480 198 C 480 240 753.33 240 753.33 281"/>
+        <path class="connector" d="M 480 198 C 480 240 890 240 890 281"/>
+      </svg>
+
+      <div class="hub-node">
+        <div class="circle"><img src="assets/repstark-mark-circle.png" alt="RepStark"></div>
+        <span class="label">RepStark</span>
+      </div>
+
+      <div class="mid-node" title="The internet">
+        <div class="circle">🌐</div>
+        <span class="label">Internet</span>
+      </div>
+
+      <div class="plat-node" style="left:7.29%;" title="X"><span class="icon badge" style="background:#000;">𝕏</span><span class="label">X</span></div>
+      <div class="plat-node" style="left:21.53%;" title="Reddit"><span class="icon"><img src="assets/icon-reddit.png" alt="Reddit"></span><span class="label">Reddit</span></div>
+      <div class="plat-node" style="left:35.76%;" title="Instagram"><span class="icon"><img src="assets/icon-instagram.png" alt="Instagram"></span><span class="label">Instagram</span></div>
+      <div class="plat-node" style="left:50%;" title="TikTok"><span class="icon badge" style="background:#000;">♪</span><span class="label">TikTok</span></div>
+      <div class="plat-node" style="left:64.24%;" title="YouTube"><span class="icon"><img src="assets/icon-youtube.png" alt="YouTube"></span><span class="label">YouTube</span></div>
+      <div class="plat-node" style="left:78.47%;" title="Facebook"><span class="icon"><img src="assets/icon-facebook.png" alt="Facebook"></span><span class="label">Facebook</span></div>
+      <div class="plat-node" style="left:92.71%;" title="LinkedIn"><span class="icon"><img src="assets/icon-linkedin.png" alt="LinkedIn"></span><span class="label">LinkedIn</span></div>
+    </div>
+  </div>
+
+  <section class="group">
+    <div class="group-head">
+      <h2>Video spots</h2>
+      <span class="count">7 videos · sound on</span>
+    </div>
+    <div class="grid">
+
+      <div class="card wide">
+        <video class="media" controls preload="metadata" poster="assets/creative-case-individual.jpg">
+          <source src="assets/creative-vid-individual-20s-h.mp4" type="video/mp4">
+        </video>
+        <div class="meta">
+          <span class="tag">Flagship · Individual</span>
+          <h3>20s — horizontal</h3>
+          <p>Live right now on repstark.com, below the hero.</p>
+          <span class="fmt">1280×720 · MP4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <video class="media" controls preload="metadata" poster="assets/creative-poster-case-date.jpg">
+          <source src="assets/creative-vid-case-date-33s-v.mp4" type="video/mp4">
+        </video>
+        <div class="meta">
+          <span class="tag">Case study · The Date</span>
+          <h3>33s — vertical</h3>
+          <p>A good night out, and the kind of thing that can follow it online.</p>
+          <span class="fmt">1080×1920 · MP4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <video class="media" controls preload="metadata" poster="assets/creative-poster-individual-v.jpg">
+          <source src="assets/creative-vid-individual-20s-v.mp4" type="video/mp4">
+        </video>
+        <div class="meta">
+          <span class="tag">Flagship · Individual</span>
+          <h3>20s — vertical</h3>
+          <p>Same spot, cut for Reels, TikTok, and Shorts.</p>
+          <span class="fmt">1080×1920 · MP4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <video class="media" controls preload="metadata" poster="assets/creative-poster-awareness.jpg">
+          <source src="assets/creative-vid-awareness-30s-v.mp4" type="video/mp4">
+        </video>
+        <div class="meta">
+          <span class="tag">General awareness</span>
+          <h3>30s — vertical</h3>
+          <p>Broad opener — not knowing what's already out there.</p>
+          <span class="fmt">1080×1920 · MP4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <video class="media" controls preload="metadata" poster="assets/creative-poster-platforms.jpg">
+          <source src="assets/creative-vid-platforms-30s-v.mp4" type="video/mp4">
+        </video>
+        <div class="meta">
+          <span class="tag">Platforms</span>
+          <h3>30s — vertical</h3>
+          <p>A screenshot shared on X, and where it can spread from there.</p>
+          <span class="fmt">1080×1920 · MP4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <video class="media" controls preload="metadata" poster="assets/creative-poster-case-x.jpg">
+          <source src="assets/creative-vid-case-x-25s-v.mp4" type="video/mp4">
+        </video>
+        <div class="meta">
+          <span class="tag">Case study · X</span>
+          <h3>25s — vertical</h3>
+          <p>The X-specific cut of the screenshot case study.</p>
+          <span class="fmt">1080×1920 · MP4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <video class="media" controls preload="metadata" poster="assets/creative-poster-case-keys.jpg">
+          <source src="assets/creative-vid-case-keys-35s-v.mp4" type="video/mp4">
+        </video>
+        <div class="meta">
+          <span class="tag">Case study · Keys</span>
+          <h3>35s — vertical</h3>
+          <p>A worried night, and the relief on the other side of it getting handled.</p>
+          <span class="fmt">1080×1920 · MP4</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="group">
+    <div class="group-head">
+      <h2>Case studies</h2>
+      <span class="count">6 stills · static</span>
+    </div>
+    <div class="grid">
+
+      <div class="card">
+        <button class="imgbtn" data-full="assets/creative-case-individual.jpg"><img class="media" src="assets/creative-case-individual.jpg" alt="Case study: Individual"></button>
+        <div class="meta">
+          <span class="tag">Case study · Individual</span>
+          <h3>The pile-on that followed her home</h3>
+          <p>Covers X, Instagram, and Reddit in one piece — the broadest of the six.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="imgbtn" data-full="assets/creative-case-youtube.jpg"><img class="media" src="assets/creative-case-youtube.jpg" alt="Case study: YouTube"></button>
+        <div class="meta">
+          <span class="tag">Case study · YouTube</span>
+          <h3>The video that clipped the truth</h3>
+          <p>A drama channel's out-of-context clip, and how the audit reads it.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="imgbtn" data-full="assets/creative-case-facebook.jpg"><img class="media" src="assets/creative-case-facebook.jpg" alt="Case study: Facebook"></button>
+        <div class="meta">
+          <span class="tag">Case study · Facebook</span>
+          <h3>The post the whole town saw</h3>
+          <p>An old post resurfacing in a local community group.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="imgbtn" data-full="assets/creative-case-instagram.jpg"><img class="media" src="assets/creative-case-instagram.jpg" alt="Case study: Instagram"></button>
+        <div class="meta">
+          <span class="tag">Case study · Instagram</span>
+          <h3>The callout post</h3>
+          <p>A tagged callout and the comment pile-on that followed.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="imgbtn" data-full="assets/creative-case-reddit.jpg"><img class="media" src="assets/creative-case-reddit.jpg" alt="Case study: Reddit"></button>
+        <div class="meta">
+          <span class="tag">Case study · Reddit</span>
+          <h3>The thread that wouldn't die</h3>
+          <p>A drama-subreddit callout thread, crossposted and still climbing.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="imgbtn" data-full="assets/creative-case-linkedin.jpg"><img class="media" src="assets/creative-case-linkedin.jpg" alt="Case study: LinkedIn"></button>
+        <div class="meta">
+          <span class="tag">Case study · LinkedIn</span>
+          <h3>The profile that wasn't his</h3>
+          <p>An impersonating profile, borrowed history, and a recommendation he never gave.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="bottom">
+    <p>Built for RepStark — reputation management for individuals and local businesses.</p>
+    <a href="index.html">repstark.com →</a>
+  </footer>
+
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">CLOSE ✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.imgbtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      lbImg.src = btn.getAttribute('data-full');
+      lb.classList.add('open');
+    });
+  });
+  function closeLb(){ lb.classList.remove('open'); lbImg.src=''; }
+  document.getElementById('lightboxClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+})();
+</script>
+
+</body>
+</html>
