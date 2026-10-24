@@ -211,14 +211,6 @@ h2.sect-title{font-size:clamp(26px,3.2vw,36px);font-weight:700;line-height:1.16;
 .tier-card .tag{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.06em;margin-bottom:16px;}
 .tier-card h3{font-size:19px;font-weight:600;color:var(--text);margin-bottom:9px;}
 .tier-card p{font-size:14.5px;color:var(--text-dim);line-height:1.6;}
-/* ---------- TEAM ---------- */
-.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:32px;max-width:640px;}
-@media(max-width:560px){.team-grid{grid-template-columns:1fr;}}
-.team-card{background:var(--bg);padding:26px 24px;}
-.team-name{font-family:var(--display);font-weight:700;font-size:18px;color:var(--text);}
-.team-role{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.04em;margin:6px 0 12px;text-transform:uppercase;}
-.team-email{font-size:14px;color:var(--text-dim);text-decoration:none;}
-.team-email:hover{color:var(--accent);}
 /* ---------- HOW IT WORKS ---------- */
 .steps{margin-top:48px;border-top:1px solid var(--line);}
 .step{display:grid;grid-template-columns:70px 1fr;gap:28px;padding:34px 0;border-bottom:1px solid var(--line);}
@@ -341,12 +333,10 @@ nav.links a:hover{color:var(--accent)}
 .sect-title{font-family:var(--display);font-weight:800;color:#101828}
 .sect-lede{color:#5b6472}
 .eyebrow{color:var(--accent)}
-.trust-cols,.audit-card,.sol-card,.tier-card,.who-pill,.roi-panel,.form-panel,.team-card{border-color:var(--line)}
-.audit-card,.sol-card,.tier-card,.roi-panel,.form-panel,.team-card{background:#fff;box-shadow:0 10px 30px -24px rgba(16,24,40,.3)}
+.trust-cols,.audit-card,.sol-card,.tier-card,.who-pill,.roi-panel,.form-panel{border-color:var(--line)}
+.audit-card,.sol-card,.tier-card,.roi-panel,.form-panel{background:#fff;box-shadow:0 10px 30px -24px rgba(16,24,40,.3)}
 .audit-card h3,.sol-card h3,.tier-card h3{color:#101828}
 .audit-card p,.sol-card p,.tier-card p{color:#5b6472}
-.team-name{color:#101828}
-.team-email{color:#5b6472}
 .num,.tag{color:var(--accent)}
 .callout{background:#eaf1fc;border-color:#cfe0f8}
 .callout h3{color:#101828}
@@ -761,25 +751,6 @@ Your browser doesn't support embedded video — <a href="assets/repstark-ad-indi
 <h2>Your reputation should be working for you.</h2>
 <p>Let's find the gaps, fix the weak points, and build a reputation that helps your business win more customers.</p>
 <a class="btn-primary" href="#audit">Get My Free Reputation Audit →</a>
-</div>
-</section>
-<section class="sect" id="team">
-<div class="wrap">
-<div class="eyebrow">Who you're working with</div>
-<h2 class="sect-title">Your RepStark contacts.</h2>
-<p class="sect-lede">Direct lines to the people running your account.</p>
-<div class="team-grid">
-<div class="team-card">
-<div class="team-name">Ahmadi</div>
-<div class="team-role">Representative</div>
-<a class="team-email" href="mailto:ahmadi@repstark.com">ahmadi@repstark.com</a>
-</div>
-<div class="team-card">
-<div class="team-name">Imani</div>
-<div class="team-role">Content &amp; Social Media</div>
-<a class="team-email" href="mailto:imani@repstark.com">imani@repstark.com</a>
-</div>
-</div>
 </div>
 </section>
 <footer>
