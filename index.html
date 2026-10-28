@@ -414,7 +414,13 @@ footer{background:#f6f8fb;border-top:1px solid var(--line)}
 .chat-body{padding:16px;max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;background:#f6f8fb;-webkit-overflow-scrolling:touch;}
 .chat-msg{max-width:84%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.5;}
 .chat-msg-bot{background:#fff;border:1px solid var(--line);color:#1d2939;border-bottom-left-radius:3px;align-self:flex-start;}
-.chat-msg-bot.chat-typing{color:#98a2b3;font-style:italic;}
+.chat-typing-row{display:flex;align-items:flex-end;gap:8px;align-self:flex-start;}
+.chat-typing-avatar{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--display);font-size:9px;flex-shrink:0;}
+.chat-dots{display:flex;align-items:center;gap:4px;background:#fff;border:1px solid var(--line);border-radius:12px;border-bottom-left-radius:3px;padding:11px 14px;}
+.chat-dot{width:6px;height:6px;border-radius:50%;background:#98a2b3;animation:chatDotBounce 1.3s infinite ease-in-out;}
+.chat-dot:nth-child(2){animation-delay:.15s;}
+.chat-dot:nth-child(3){animation-delay:.3s;}
+@keyframes chatDotBounce{0%,60%,100%{transform:translateY(0);opacity:.5;}30%{transform:translateY(-4px);opacity:1;}}
 .chat-msg-user{background:var(--accent);color:#fff;border-bottom-right-radius:3px;align-self:flex-end;}
 .chat-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:#fff;}
 .chat-input-row input{flex:1;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13.5px;font-family:var(--body);outline:none;color:#101828;}
@@ -811,7 +817,7 @@ Your browser doesn't support embedded video — <a href="assets/repstark-ad-indi
     <button class="chat-close" id="chatClose" aria-label="Close chat"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
   <div class="chat-body" id="chatBody">
-    <div class="chat-msg chat-msg-bot">Hi, I'm Ava — RepStark's intake assistant. Whatever's going on, personal or business, everything you share here is confidential. Tell me a bit about your situation and I'll get the right details to the team.</div>
+    <div class="chat-msg chat-msg-bot">Hi, I'm Ava. Whatever's going on — personal or business — everything you tell me stays completely confidential, and it's only ever used to help you. Tell me a bit about your situation, and I'll make sure the right person on our team takes care of it.</div>
   </div>
   <div class="chat-input-row">
     <input type="text" id="chatInput" placeholder="Type your message…" autocomplete="off" autocorrect="off" autocapitalize="sentences" spellcheck="false" name="ava-message" />
@@ -956,9 +962,9 @@ function addChatMsg(text, who) {
 }
 function showChatTyping() {
   const d = document.createElement('div');
-  d.className = 'chat-msg chat-msg-bot chat-typing';
+  d.className = 'chat-typing-row';
   d.id = 'chatTyping';
-  d.textContent = 'Typing…';
+  d.innerHTML = '<div class="chat-typing-avatar">AV</div><div class="chat-dots"><span class="chat-dot"></span><span class="chat-dot"></span><span class="chat-dot"></span></div>';
   chatBody.appendChild(d);
   chatBody.scrollTop = chatBody.scrollHeight;
 }
