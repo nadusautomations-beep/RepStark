@@ -24,7 +24,7 @@ phoneHref: "+13056996198", // e.g. "+15551234567" — digits only, used in tel: 
 email: "admin@repstark.com"
 };
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark only">
 <title>RepStark — Online Reputation Management</title>
 <meta name="description" content="RepStark helps businesses remove what can legitimately be removed, manage what can’t, and build a stronger online reputation. Get a free reputation audit.">
@@ -111,11 +111,14 @@ p{margin:0;}
 header.nav{position:sticky;top:0;z-index:100;background:rgba(12,14,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
 .nav-inner{max-width:1180px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
 .brand{font-family:var(--display);font-weight:700;font-size:21px;color:var(--text);text-decoration:none;letter-spacing:-0.01em;}
-nav.links{display:flex;gap:32px;font-size:14.5px;font-weight:500;color:var(--text-dim);}
-nav.links a{text-decoration:none;transition:color .15s;margin-right:32px;}
-nav.links a:last-child{margin-right:0;}
+nav.links{display:flex;gap:28px;font-size:14.5px;font-weight:500;color:var(--text-dim);}
+nav.links a{text-decoration:none;transition:color .15s;white-space:nowrap;}
 nav.links a:hover{color:var(--text);}
 .nav-right{display:flex;align-items:center;gap:14px;}
+.nav-phone{display:flex;align-items:center;gap:7px;font-family:var(--body);font-weight:700;font-size:15px;color:#fff;text-decoration:none;white-space:nowrap;transition:color .15s;}
+.nav-phone:hover{color:var(--accent-bright);}
+.nav-phone svg{flex-shrink:0;}
+.nav-phone .num{display:inline;}
 .nav-cta{
 font-family:var(--body);font-weight:600;font-size:14px;color:#fff;background:var(--accent);
 padding:11px 20px;border-radius:3px;text-decoration:none;border:1px solid var(--accent);
@@ -130,7 +133,7 @@ transition:background .15s;white-space:nowrap;
 .mobile-menu{display:none;flex-direction:column;border-top:1px solid var(--line);background:var(--bg);}
 .mobile-menu a{padding:16px 32px;font-size:15px;font-weight:500;color:var(--text-dim);text-decoration:none;border-bottom:1px solid var(--line);}
 .mobile-menu.open{display:flex;}
-@media(max-width:900px){nav.links{display:none;} .nav-cta{display:none;} .nav-burger{display:flex;}}
+@media(max-width:900px){nav.links{display:none;} .nav-cta{display:none;} .nav-burger{display:flex;} .nav-phone .num{display:none;}}
 /* ---------- HERO ---------- */
 .hero{padding:88px 0 100px;position:relative;overflow:hidden;}
 .hero::before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(34,175,255,0.10),transparent 65%);pointer-events:none;}
@@ -202,7 +205,7 @@ h2.sect-title{font-size:clamp(26px,3.2vw,36px);font-weight:700;line-height:1.16;
 .sol-card h3{font-size:19px;font-weight:600;color:var(--text);margin-bottom:9px;}
 .sol-card p{font-size:14.5px;color:var(--text-dim);line-height:1.6;}
 /* ---------- PLANS ---------- */
-.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
 @media(max-width:860px){.tier-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.tier-grid{grid-template-columns:1fr;}}
 .tier-card{background:var(--bg);padding:30px 26px;transition:background .15s;}
@@ -315,6 +318,8 @@ nav.links{color:#1d2939}
 nav.links a:hover{color:var(--accent)}
 .nav-cta{background:var(--accent);border-color:var(--accent);border-radius:6px}
 .nav-cta:hover{background:var(--accent-bright)}
+.nav-phone{color:var(--text)}
+.nav-phone:hover{color:var(--accent)}
 .hero{padding:64px 0 56px;background:linear-gradient(120deg,rgba(16,24,40,.94) 0%,rgba(16,24,40,.84) 38%,rgba(16,24,40,.58) 68%,rgba(16,24,40,.28) 100%),url('https://images.unsplash.com/photo-1542190891-2093d38760f2?fm=jpg&q=80&w=2000&auto=format&fit=crop') center 20%/cover no-repeat}
 .hero::before{display:none}
 .hero h1.headline{font-family:var(--display);font-weight:800;color:#fff;font-size:clamp(38px,4.8vw,56px);letter-spacing:-.025em}
@@ -405,21 +410,39 @@ footer{background:#f6f8fb;border-top:1px solid var(--line)}
 .chat-panel.open{opacity:1;transform:translateY(0);pointer-events:auto;}
 .chat-head{background:#101828;color:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;}
 .chat-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--display);font-size:14px;flex-shrink:0;}
-.chat-head-text{line-height:1.3;}
+.chat-head-text{line-height:1.3;flex:1;}
 .chat-head-text b{font-size:14px;display:block;}
 .chat-head-text span{font-size:11.5px;color:#aeb8c9;display:flex;align-items:center;gap:6px;}
 .chat-head-text span::before{content:"";width:6px;height:6px;border-radius:50%;background:#3ecf7a;}
-.chat-body{padding:16px;max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;background:#f6f8fb;}
+.chat-close{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:none;background:rgba(255,255,255,.08);color:#aeb8c9;cursor:pointer;flex-shrink:0;transition:background .15s,color .15s;}
+.chat-close:hover{background:rgba(255,255,255,.16);color:#fff;}
+.chat-body{padding:16px;max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;background:#f6f8fb;-webkit-overflow-scrolling:touch;}
 .chat-msg{max-width:84%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.5;}
 .chat-msg-bot{background:#fff;border:1px solid var(--line);color:#1d2939;border-bottom-left-radius:3px;align-self:flex-start;}
-.chat-msg-bot.chat-typing{color:#98a2b3;font-style:italic;}
+.chat-typing-row{display:flex;align-items:flex-end;gap:8px;align-self:flex-start;}
+.chat-typing-avatar{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--display);font-size:9px;flex-shrink:0;}
+.chat-dots{display:flex;align-items:center;gap:4px;background:#fff;border:1px solid var(--line);border-radius:12px;border-bottom-left-radius:3px;padding:11px 14px;}
+.chat-dot{width:6px;height:6px;border-radius:50%;background:#98a2b3;animation:chatDotBounce 1.3s infinite ease-in-out;}
+.chat-dot:nth-child(2){animation-delay:.15s;}
+.chat-dot:nth-child(3){animation-delay:.3s;}
+@keyframes chatDotBounce{0%,60%,100%{transform:translateY(0);opacity:.5;}30%{transform:translateY(-4px);opacity:1;}}
 .chat-msg-user{background:var(--accent);color:#fff;border-bottom-right-radius:3px;align-self:flex-end;}
 .chat-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:#fff;}
 .chat-input-row input{flex:1;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13.5px;font-family:var(--body);outline:none;color:#101828;}
 .chat-input-row input:focus{border-color:var(--accent);}
 .chat-input-row button{background:var(--accent);border:none;color:#fff;width:38px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .chat-input-row button:hover{background:var(--accent-bright);}
-@media(max-width:480px){.chat-panel{right:12px;bottom:82px;} .chat-launcher{right:14px;bottom:14px;}}
+body.chat-locked{overflow:hidden;}
+@media(max-width:640px){
+.chat-launcher{right:16px;bottom:16px;}
+.chat-panel{right:0;left:0;top:0;bottom:0;width:100%;max-width:100%;height:100vh;height:100dvh;border-radius:0;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,0,1),opacity .28s;}
+.chat-panel.open{transform:translateY(0);}
+.chat-head{padding-top:calc(16px + env(safe-area-inset-top));}
+.chat-body{flex:1;max-height:none;}
+.chat-msg{font-size:14.5px;}
+.chat-input-row{padding-bottom:calc(12px + env(safe-area-inset-bottom));}
+.chat-input-row input{font-size:16px;}
+}
 </style>
 </head>
 <body>
@@ -435,11 +458,16 @@ footer{background:#f6f8fb;border-top:1px solid var(--line)}
 <a href="#faq">FAQ</a>
 </nav>
 <div class="nav-right">
+<a class="nav-phone" id="navPhoneLink" href="#" style="display:none;" aria-label="Call RepStark">
+<svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+<span class="num" id="navPhoneText"></span>
+</a>
 <a class="nav-cta" href="#audit">Free Reputation Audit</a>
 <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div>
 </div>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+<a href="#" id="mobilePhoneLink" style="display:none;color:var(--accent);font-weight:700;"></a>
 <a href="#how">How It Works</a>
 <a href="#solutions">Solutions</a>
 <a href="#who">Who We Help</a>
@@ -690,6 +718,7 @@ Your browser doesn't support embedded video — <a href="assets/repstark-ad-indi
 <div class="tier-card"><div class="tag">STEP 1</div><h3>Free Audit</h3><p>A one-time, no-cost review of what's showing up publicly right now, plus a prioritized action plan. No obligation to continue.</p></div>
 <div class="tier-card"><div class="tag">OPTION A</div><h3>Monitoring &amp; Response</h3><p>Ongoing tracking of reviews, search results, and mentions, with professional response management. For businesses that want eyes on their reputation without active removal work.</p></div>
 <div class="tier-card tier-highlight"><div class="tag">OPTION B</div><h3>Full Service</h3><p>Everything in Monitoring &amp; Response, plus active removal and correction work where it's legitimately available — with a monthly report on what changed. Our most comprehensive plan.</p></div>
+<div class="tier-card"><div class="tag">OPTION C · BUSINESSES ONLY</div><h3>Business Membership</h3><p>A monthly membership on top of ongoing monitoring, built for businesses that can't wait for business hours — priority handling and real <strong>24/7 support</strong> whenever an issue comes up. Not available on individual accounts.</p></div>
 </div>
 <div class="mini-note" style="margin-top:28px;">Pricing is confirmed directly with you based on your specific situation — not posted publicly. <a href="#audit">Get your free audit</a> and we'll walk you through the right fit.</div>
 </div>
@@ -796,12 +825,13 @@ Your browser doesn't support embedded video — <a href="assets/repstark-ad-indi
   <div class="chat-head">
     <div class="chat-avatar">AV</div>
     <div class="chat-head-text"><b>Ava · Intake Assistant</b><span>AI assistant, online now</span></div>
+    <button class="chat-close" id="chatClose" aria-label="Close chat"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
   <div class="chat-body" id="chatBody">
-    <div class="chat-msg chat-msg-bot">Hi, I'm Ava — RepStark's intake assistant. Whatever's going on, personal or business, everything you share here is confidential. Tell me a bit about your situation and I'll get the right details to the team.</div>
+    <div class="chat-msg chat-msg-bot">Hi, I'm Ava. Whatever's going on — personal or business — everything you tell me stays completely confidential, and it's only ever used to help you. Tell me a bit about your situation, and I'll make sure the right person on our team takes care of it.</div>
   </div>
   <div class="chat-input-row">
-    <input type="text" id="chatInput" placeholder="Type your message…" />
+    <input type="text" id="chatInput" placeholder="Type your message…" autocomplete="off" autocorrect="off" autocapitalize="sentences" spellcheck="false" name="ava-message" />
     <button id="chatSend" aria-label="Send"><svg viewBox="0 0 24 24" width="17" height="17" fill="none"><path d="M4 12l16-8-6 16-3-6-7-2z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></button>
   </div>
 </div>
@@ -879,10 +909,19 @@ const phoneItem = document.getElementById('footerPhoneItem');
 const phoneLink = document.getElementById('footerPhoneLink');
 const emailItem = document.getElementById('footerEmailItem');
 const emailLink = document.getElementById('footerEmailLink');
+const navPhoneLink = document.getElementById('navPhoneLink');
+const navPhoneText = document.getElementById('navPhoneText');
+const mobilePhoneLink = document.getElementById('mobilePhoneLink');
 if (cfg.phoneDisplay && cfg.phoneHref) {
 phoneLink.textContent = cfg.phoneDisplay;
 phoneLink.href = 'tel:' + cfg.phoneHref;
 phoneItem.style.display = '';
+navPhoneText.textContent = cfg.phoneDisplay;
+navPhoneLink.href = 'tel:' + cfg.phoneHref;
+navPhoneLink.style.display = '';
+mobilePhoneLink.textContent = 'Call ' + cfg.phoneDisplay;
+mobilePhoneLink.href = 'tel:' + cfg.phoneHref;
+mobilePhoneLink.style.display = '';
 }
 if (cfg.email) {
 emailLink.textContent = cfg.email;
@@ -943,9 +982,9 @@ function addChatMsg(text, who) {
 }
 function showChatTyping() {
   const d = document.createElement('div');
-  d.className = 'chat-msg chat-msg-bot chat-typing';
+  d.className = 'chat-typing-row';
   d.id = 'chatTyping';
-  d.textContent = 'Typing…';
+  d.innerHTML = '<div class="chat-typing-avatar">AV</div><div class="chat-dots"><span class="chat-dot"></span><span class="chat-dot"></span><span class="chat-dot"></span></div>';
   chatBody.appendChild(d);
   chatBody.scrollTop = chatBody.scrollHeight;
 }
@@ -985,11 +1024,23 @@ async function handleChatSend() {
   }
 }
 
+const chatClose = document.getElementById('chatClose');
+function openChat() {
+  chatPanel.classList.add('open');
+  chatLauncher.classList.add('open');
+  document.body.classList.add('chat-locked');
+  setTimeout(() => chatInput.focus(), 260);
+}
+function closeChat() {
+  chatPanel.classList.remove('open');
+  chatLauncher.classList.remove('open');
+  document.body.classList.remove('chat-locked');
+  chatInput.blur();
+}
 chatLauncher.addEventListener('click', () => {
-  chatPanel.classList.toggle('open');
-  chatLauncher.classList.toggle('open');
-  if (chatPanel.classList.contains('open')) chatInput.focus();
+  chatPanel.classList.contains('open') ? closeChat() : openChat();
 });
+chatClose.addEventListener('click', closeChat);
 chatSend.addEventListener('click', handleChatSend);
 chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleChatSend(); });
 </script>
