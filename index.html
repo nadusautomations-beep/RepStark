@@ -111,11 +111,14 @@ p{margin:0;}
 header.nav{position:sticky;top:0;z-index:100;background:rgba(12,14,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
 .nav-inner{max-width:1180px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
 .brand{font-family:var(--display);font-weight:700;font-size:21px;color:var(--text);text-decoration:none;letter-spacing:-0.01em;}
-nav.links{display:flex;gap:32px;font-size:14.5px;font-weight:500;color:var(--text-dim);}
-nav.links a{text-decoration:none;transition:color .15s;margin-right:32px;}
-nav.links a:last-child{margin-right:0;}
+nav.links{display:flex;gap:28px;font-size:14.5px;font-weight:500;color:var(--text-dim);}
+nav.links a{text-decoration:none;transition:color .15s;white-space:nowrap;}
 nav.links a:hover{color:var(--text);}
 .nav-right{display:flex;align-items:center;gap:14px;}
+.nav-phone{display:flex;align-items:center;gap:7px;font-family:var(--body);font-weight:700;font-size:15px;color:#fff;text-decoration:none;white-space:nowrap;transition:color .15s;}
+.nav-phone:hover{color:var(--accent-bright);}
+.nav-phone svg{flex-shrink:0;}
+.nav-phone .num{display:inline;}
 .nav-cta{
 font-family:var(--body);font-weight:600;font-size:14px;color:#fff;background:var(--accent);
 padding:11px 20px;border-radius:3px;text-decoration:none;border:1px solid var(--accent);
@@ -130,7 +133,7 @@ transition:background .15s;white-space:nowrap;
 .mobile-menu{display:none;flex-direction:column;border-top:1px solid var(--line);background:var(--bg);}
 .mobile-menu a{padding:16px 32px;font-size:15px;font-weight:500;color:var(--text-dim);text-decoration:none;border-bottom:1px solid var(--line);}
 .mobile-menu.open{display:flex;}
-@media(max-width:900px){nav.links{display:none;} .nav-cta{display:none;} .nav-burger{display:flex;}}
+@media(max-width:900px){nav.links{display:none;} .nav-cta{display:none;} .nav-burger{display:flex;} .nav-phone .num{display:none;}}
 /* ---------- HERO ---------- */
 .hero{padding:88px 0 100px;position:relative;overflow:hidden;}
 .hero::before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(34,175,255,0.10),transparent 65%);pointer-events:none;}
@@ -315,6 +318,8 @@ nav.links{color:#1d2939}
 nav.links a:hover{color:var(--accent)}
 .nav-cta{background:var(--accent);border-color:var(--accent);border-radius:6px}
 .nav-cta:hover{background:var(--accent-bright)}
+.nav-phone{color:var(--text)}
+.nav-phone:hover{color:var(--accent)}
 .hero{padding:64px 0 56px;background:linear-gradient(120deg,rgba(16,24,40,.94) 0%,rgba(16,24,40,.84) 38%,rgba(16,24,40,.58) 68%,rgba(16,24,40,.28) 100%),url('https://images.unsplash.com/photo-1542190891-2093d38760f2?fm=jpg&q=80&w=2000&auto=format&fit=crop') center 20%/cover no-repeat}
 .hero::before{display:none}
 .hero h1.headline{font-family:var(--display);font-weight:800;color:#fff;font-size:clamp(38px,4.8vw,56px);letter-spacing:-.025em}
@@ -453,11 +458,16 @@ body.chat-locked{overflow:hidden;}
 <a href="#faq">FAQ</a>
 </nav>
 <div class="nav-right">
+<a class="nav-phone" id="navPhoneLink" href="#" style="display:none;" aria-label="Call RepStark">
+<svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+<span class="num" id="navPhoneText"></span>
+</a>
 <a class="nav-cta" href="#audit">Free Reputation Audit</a>
 <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div>
 </div>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+<a href="#" id="mobilePhoneLink" style="display:none;color:var(--accent);font-weight:700;"></a>
 <a href="#how">How It Works</a>
 <a href="#solutions">Solutions</a>
 <a href="#who">Who We Help</a>
@@ -899,10 +909,19 @@ const phoneItem = document.getElementById('footerPhoneItem');
 const phoneLink = document.getElementById('footerPhoneLink');
 const emailItem = document.getElementById('footerEmailItem');
 const emailLink = document.getElementById('footerEmailLink');
+const navPhoneLink = document.getElementById('navPhoneLink');
+const navPhoneText = document.getElementById('navPhoneText');
+const mobilePhoneLink = document.getElementById('mobilePhoneLink');
 if (cfg.phoneDisplay && cfg.phoneHref) {
 phoneLink.textContent = cfg.phoneDisplay;
 phoneLink.href = 'tel:' + cfg.phoneHref;
 phoneItem.style.display = '';
+navPhoneText.textContent = cfg.phoneDisplay;
+navPhoneLink.href = 'tel:' + cfg.phoneHref;
+navPhoneLink.style.display = '';
+mobilePhoneLink.textContent = 'Call ' + cfg.phoneDisplay;
+mobilePhoneLink.href = 'tel:' + cfg.phoneHref;
+mobilePhoneLink.style.display = '';
 }
 if (cfg.email) {
 emailLink.textContent = cfg.email;
