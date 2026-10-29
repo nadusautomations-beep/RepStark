@@ -124,6 +124,10 @@ export default async function handler(req, res) {
         } catch (err) {
           console.error("Notion write failed:", err);
           notionResult = "failed";
+          // Lead wasn't saved anywhere — alert the team so they can follow up manually.
+          // notifySlack never throws (it catches its own errors internally), so this
+          // can't mask the error above or escape this catch block.
+          await notifySlack(toolUse.input, "Chatbot (Ava) — NOTION SAVE FAILED, needs manual follow-up");
         }
       } else {
         notionResult = "not_configured";
