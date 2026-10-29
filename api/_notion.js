@@ -24,8 +24,17 @@ export async function createNotionPage(fields, notionToken, databaseId, notePref
   if (fields.phone) properties["Phone"] = { phone_number: fields.phone };
   if (fields.business) properties["Business Name"] = { rich_text: [{ text: { content: fields.business } }] };
   if (fields.website) properties["Website"] = { url: fields.website };
-  if (fields.industry) properties["Industry"] = { select: { name: fields.industry } };
-  if (fields.problem) properties["Notes"] = { rich_text: [{ text: { content: `${notePrefix} ${fields.problem}` } }] };
+
+  // Industry is free text from the visitor (or Ava's paraphrase of it), so it can't
+  // be written as a Notion "select" value — any name not already in that property's
+  // fixed option list gets rejected, and that failure takes the entire page down with
+  // it. Keep it as plain text in Notes instead, where any value is always valid.
+  const noteParts = [];
+  if (fields.industry) noteParts.push(`Industry: ${fields.industry}`);
+  if (fields.problem) noteParts.push(fields.problem);
+  if (noteParts.length) {
+    properties["Notes"] = { rich_text: [{ text: { content: `${notePrefix} ${noteParts.join(" | ")}` } }] };
+  }
 
   const res = await fetch("https://api.notion.com/v1/pages", {
     method: "POST",
