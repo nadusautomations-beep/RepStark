@@ -75,7 +75,9 @@ email: "admin@repstark.com"
 {"@type":"Question","name":"How does RepStark help generate more reviews?","acceptedAnswer":{"@type":"Answer","text":"We make it simple for happy customers to leave a review — the right ask, at the right moment, through the right channel — instead of leaving it to chance."}},
 {"@type":"Question","name":"Do you respond to negative reviews?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every review gets a timely, professional response, negative ones included. A well-handled negative review often builds more trust than no response at all."}},
 {"@type":"Question","name":"Can RepStark help with Google Business Profiles?","acceptedAnswer":{"@type":"Answer","text":"Yes. Keeping your Google listing complete, correct, and up to date is part of the core service, not an add-on."}},
-{"@type":"Question","name":"How long does reputation improvement take?","acceptedAnswer":{"@type":"Answer","text":"It depends on what we are dealing with and how fast the website involved responds. After the free audit, we will tell you what to realistically expect."}},
+{"@type":"Question","name":"How long does reputation improvement take?","acceptedAnswer":{"@type":"Answer","text":"It depends on the problem. Things that break a website's rules usually come down in days to a few weeks. Pushing bad results down usually takes 3 to 6 months, longer for tough cases. Watching and replying never stops."}},
+{"@type":"Question","name":"How long does it take to get a fake review taken down?","acceptedAnswer":{"@type":"Answer","text":"Usually days to a few weeks after we report it. The website decides, not us, and sometimes it says no. If it does, we reply to the review the right way and outweigh it with real ones."}},
+{"@type":"Question","name":"What can't RepStark do?","acceptedAnswer":{"@type":"Answer","text":"We can't delete an honest review from a real customer, make a real news story disappear, erase official court records, control what Google decides, or promise a result or a date. We also never fake reviews or use shady tricks."}},
 {"@type":"Question","name":"Do I need to change my existing marketing?","acceptedAnswer":{"@type":"Answer","text":"No. Reputation management works alongside whatever marketing you're already running — it makes the people your marketing brings in more likely to trust you."}},
 {"@type":"Question","name":"How much does RepStark cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on what needs fixing. Start with the free audit and we'll give you a straight answer from there."}},
 {"@type":"Question","name":"I got a bad review on Google — how do I get it taken down?","acceptedAnswer":{"@type":"Answer","text":"We look at whether it breaks a platform's review policies (fake, abusive, posted by a non-customer, etc.) and get it taken down if it does. If it can't be removed, we help you respond to it professionally and outweigh it with more real, positive reviews."}},
@@ -408,6 +410,85 @@ footer{background:#f6f8fb;border-top:1px solid var(--line)}
 .footer-bottom{border-color:var(--line);color:#98a2b3}
 @media(max-width:980px){.hero{padding:56px 0 52px}}
 
+/* ---------- HOW LONG IT TAKES ---------- */
+.phase-band{display:grid;grid-template-columns:repeat(5,1fr);margin-top:52px;position:relative;}
+.phase-band::before{content:"";position:absolute;left:12px;right:12px;top:11px;height:2px;background:linear-gradient(90deg,var(--accent),var(--growth));opacity:.4;}
+.phase{position:relative;padding-right:22px;}
+.phase .pdot{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+.phase .pdot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);}
+.phase:last-child .pdot{border-color:var(--growth);}
+.phase:last-child .pdot::after{background:var(--growth);}
+.phase .pwhen{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:16px 0 8px;}
+.phase:last-child .pwhen{color:var(--growth);}
+.phase h3{font-size:17px;font-weight:700;color:#101828;margin-bottom:6px;}
+.phase p{font-size:14px;color:var(--text-dim);line-height:1.55;}
+@media(max-width:900px){
+.phase-band{grid-template-columns:1fr;}
+.phase-band::before{left:11px;right:auto;top:12px;bottom:12px;width:2px;height:auto;background:linear-gradient(180deg,var(--accent),var(--growth));}
+.phase{display:grid;grid-template-columns:24px 1fr;column-gap:18px;padding:0 0 24px;}
+.phase .pdot{grid-column:1;grid-row:1 / span 3;}
+.phase .pwhen,.phase h3,.phase p{grid-column:2;}
+.phase .pwhen{margin:4px 0 6px;}
+}
+.time-groups{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px;align-items:start;}
+@media(max-width:860px){.time-groups{grid-template-columns:1fr;}}
+.time-stack{display:grid;gap:24px;}
+.time-group{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 10px 30px -24px rgba(16,24,40,.3);}
+.time-group-head{padding:16px 22px;background:#f6f8fb;border-bottom:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.time-group-head h3{font-size:17px;font-weight:700;color:#101828;}
+.time-group-head span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
+.trow{border-top:1px solid var(--line);}
+.trow:first-of-type{border-top:0;}
+.trow summary{list-style:none;cursor:pointer;padding:15px 22px;display:grid;grid-template-columns:1fr auto 14px;gap:14px;align-items:center;}
+.trow summary::-webkit-details-marker{display:none;}
+.trow summary:hover .tname{color:var(--accent);}
+.trow .tname{font-size:14.5px;font-weight:600;color:#101828;line-height:1.4;transition:color .15s;}
+.trow .ttime{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--accent);background:#eaf1fc;border-radius:999px;padding:5px 10px;white-space:nowrap;}
+.tchev{color:var(--text-faint);font-family:var(--mono);font-size:16px;line-height:1;transition:transform .2s;text-align:center;}
+details[open] > summary .tchev{transform:rotate(45deg);color:var(--accent);}
+.trow .tbody{padding:0 22px 18px;font-size:14px;color:var(--text-dim);line-height:1.65;}
+.trow .tbody ul{margin:8px 0 0;padding-left:18px;}
+.trow .tbody li{margin-bottom:4px;}
+@media(max-width:520px){
+.trow summary{grid-template-columns:1fr 14px;row-gap:8px;}
+.trow .tname{grid-column:1;grid-row:1;}
+.trow .tchev{grid-column:2;grid-row:1;}
+.trow .ttime{grid-column:1;grid-row:2;justify-self:start;}
+}
+.time-factors{background:#101828;color:#fff;border-radius:12px;padding:24px 24px 20px;}
+.time-factors h3{font-size:17px;font-weight:700;margin-bottom:12px;color:#fff;}
+.time-factors ul{margin:0;padding-left:18px;}
+.time-factors li{font-size:14px;color:#c7cedb;line-height:1.6;margin-bottom:6px;}
+/* ---------- WHAT WE CAN AND CAN'T DO ---------- */
+.cc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;align-items:start;}
+@media(max-width:860px){.cc-grid{grid-template-columns:1fr;}}
+.cc-col{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 10px 30px -24px rgba(16,24,40,.3);}
+.cc-head{padding:18px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;background:#f6f8fb;}
+.cc-ic{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff;flex-shrink:0;}
+.cc-can .cc-ic{background:var(--growth);}
+.cc-cant .cc-ic{background:#b42318;}
+.cc-head h3{font-size:18px;font-weight:700;color:#101828;}
+.cc-head p{font-size:12.5px;color:var(--text-faint);margin-top:2px;}
+.cc-list{list-style:none;margin:0;padding:6px 0;}
+.cc-list li{padding:11px 24px;font-size:14.5px;color:#1d2939;display:grid;grid-template-columns:16px 1fr;gap:12px;line-height:1.5;}
+.cc-list li::before{content:"\2713";color:var(--growth);font-weight:700;}
+.cc-cant details{border-top:1px solid var(--line);}
+.cc-cant details:first-of-type{border-top:0;}
+.cc-cant summary{list-style:none;cursor:pointer;padding:13px 24px;display:grid;grid-template-columns:16px 1fr 14px;gap:12px;align-items:start;font-size:14.5px;color:#1d2939;line-height:1.5;}
+.cc-cant summary::-webkit-details-marker{display:none;}
+.cc-cant summary:hover{color:#b42318;}
+.cc-cant summary .x{color:#b42318;font-weight:700;}
+.cc-cant .instead{padding:0 24px 16px 52px;font-size:13.5px;color:var(--text-dim);line-height:1.6;}
+.cc-cant .instead b{color:#101828;font-weight:600;}
+.cc-note{font-size:12.5px;color:var(--text-faint);padding:12px 24px 16px;border-top:1px solid var(--line);}
+.sub-title{font-size:clamp(21px,2.4vw,26px);font-weight:800;color:#101828;margin-top:80px;max-width:640px;line-height:1.2;}
+.expect-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:32px;}
+@media(max-width:980px){.expect-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.expect-grid{grid-template-columns:1fr;}}
+.expect-card{background:#fff;padding:24px 22px;}
+.expect-card .eq{font-family:var(--display);font-size:16px;font-weight:700;color:#101828;margin-bottom:10px;line-height:1.35;}
+.expect-card .ea{font-size:14px;color:var(--text-dim);line-height:1.6;}
+.expect-card .ea b{color:#101828;font-weight:600;}
 /* ---------- CHAT WIDGET ---------- */
 .chat-launcher{position:fixed;right:22px;bottom:22px;z-index:200;width:58px;height:58px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;box-shadow:0 12px 28px -8px rgba(10,127,168,.5);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s;}
 .chat-launcher:hover{transform:scale(1.06);background:var(--accent-bright);}
@@ -482,6 +563,7 @@ body.chat-locked{overflow:hidden;}
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
 <a href="#" id="mobilePhoneLink" style="display:none;color:var(--accent);font-weight:700;"></a>
 <a href="#how">How It Works</a>
+<a href="#timeline">How Long It Takes</a>
 <a href="#solutions">Solutions</a>
 <a href="#who">Who We Help</a>
 <a href="#plans">Plans</a>
@@ -614,6 +696,7 @@ Your browser doesn't support embedded video — <a href="assets/repstark-ad-indi
 <div class="callout">
 <h3>We tell you straight what can and can't come down.</h3>
 <p>Some things, like an honest bad review from a real customer, can't be deleted by anyone, and we won't pretend otherwise. When something can't come down, we reply to it the right way and build up enough good stuff that it stops being the first thing people see.</p>
+<p style="margin-top:12px;"><a href="#limits" style="color:var(--accent);font-weight:600;font-size:14px;text-decoration:none;">See everything we can and can't do →</a></p>
 </div>
 </div>
 </section>
@@ -623,10 +706,106 @@ Your browser doesn't support embedded video — <a href="assets/repstark-ad-indi
 <h2 class="sect-title">How RepStark works.</h2>
 <div class="steps">
 <div class="step"><div class="snum">01</div><div><h3>You tell us what's wrong</h3><p>Fill out the free audit form or chat with Ava. Tell us what's bothering you and where it shows up.</p></div></div>
-<div class="step"><div class="snum">02</div><div><h3>We tell you straight</h3><p>We check what can come down and what can't, and show you exactly what we'd do about each thing.</p></div></div>
+<div class="step"><div class="snum">02</div><div><h3>We tell you straight</h3><p>We check what can come down and what can't, show you exactly what we'd do about each thing, and how long it usually takes.</p></div></div>
 <div class="step"><div class="snum">03</div><div><h3>We fix it and keep watching</h3><p>We take down what we can, build up the good stuff, and keep watching so new problems get caught early.</p></div></div>
 </div>
 <div class="steps-cta"><a class="btn-primary" href="#audit">Get My Free Reputation Audit →</a></div>
+</div>
+</section>
+<section class="sect" id="timeline" style="background:#fff;">
+<div class="wrap">
+<div class="eyebrow">How long it takes</div>
+<h2 class="sect-title">Some things take days. Some take months. Here's what's normal.</h2>
+<p class="sect-lede">Short version: things that break a website's rules usually come down in days to weeks, pushing bad stuff down takes months, and watching never stops. Tap any line below to see what's actually happening behind it.</p>
+<div class="phase-band">
+<div class="phase"><div class="pdot"></div><div class="pwhen">1–3 business days</div><h3>Your free audit</h3><p>What we found, what can come down, and what can't. Before you pay anything.</p></div>
+<div class="phase"><div class="pdot"></div><div class="pwhen">First week</div><h3>We get to work</h3><p>Watching is set up, replies start, and we report everything that breaks a website's rules.</p></div>
+<div class="phase"><div class="pdot"></div><div class="pwhen">Weeks 2–8</div><h3>Things start coming down</h3><p>Websites answer our requests. Fake reviews, private details, and mugshots start coming down. New reviews come in.</p></div>
+<div class="phase"><div class="pdot"></div><div class="pwhen">Months 3–6</div><h3>The good starts to win</h3><p>Good, accurate stuff starts showing up above the bad, and your rating starts to move.</p></div>
+<div class="phase"><div class="pdot"></div><div class="pwhen">Every month after</div><h3>We keep watching</h3><p>We reply to every review, catch anything that comes back, and send you a report.</p></div>
+</div>
+<div class="time-groups">
+<div class="time-group"><div class="time-group-head"><h3>Take it down</h3><span>01 · Removal</span></div>
+<details class="trow"><summary><span class="tname">Fake reviews and posts that break a website's rules</span><span class="ttime">Days to a few weeks</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>We report it to the website and point to the exact rule it breaks. Then the website decides, not us. Some answer in two or three days, some take weeks. If they say no, we push back once more with proof where the website allows it. If it still stays up, we move it to Build it up.</p></div></details>
+<details class="trow"><summary><span class="tname">Your address or phone number posted online</span><span class="ttime">Days to a few weeks</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>We ask the websites to take it down, and ask Google to stop showing it in results. People-search websites often post it again later, so we keep checking and report it again if it comes back.</p></div></details>
+<details class="trow"><summary><span class="tname">Mugshots on mugshot websites</span><span class="ttime">A few weeks</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>We send each website the request it needs. If your charges were dropped or your record was cleared, proof of that helps a lot, and the faster you can send it, the faster this moves. Official court records are different: we can't change those (see what we can't do below).</p></div></details>
+<details class="trow"><summary><span class="tname">Lies about you or your business</span><span class="ttime">Weeks to a few months</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>We send the website a formal request showing it isn't true. These take longer because the website looks at both sides before it decides. If it won't act, we push it down with good, accurate stuff instead. If you want to sue someone, that's a job for a lawyer, and we can work alongside them.</p></div></details>
+</div>
+<div class="time-group"><div class="time-group-head"><h3>Watch and reply</h3><span>02 · Monitoring</span></div>
+<details class="trow"><summary><span class="tname">Getting set up</span><span class="ttime">First week</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>We set up watching on your reviews and on what shows up when people Google you or your business, across the websites that matter for you.</p></div></details>
+<details class="trow"><summary><span class="tname">Replying to new reviews</span><span class="ttime">1–2 business days</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>Every review, good or bad, gets a calm, professional reply that sounds like you. We never argue and never share a customer's private details. Anything urgent, like a threat, gets flagged to you right away. On the Business Membership, issues get handled any time, day or night.</p></div></details>
+<details class="trow"><summary><span class="tname">Your report</span><span class="ttime">Every month</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>What we found, what we did, what came down, and what changed. In plain words, not a pile of charts.</p></div></details>
+</div>
+<div class="time-group"><div class="time-group-head"><h3>Build it up</h3><span>03 · Reputation Building</span></div>
+<details class="trow"><summary><span class="tname">Fixing your Google listing</span><span class="ttime">Days to a few weeks</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>Hours, photos, services, and details get corrected and filled in. Most changes show within days. Some need Google to review them first, which can take a few weeks.</p></div></details>
+<details class="trow"><summary><span class="tname">Getting more real reviews</span><span class="ttime">2–4 weeks to start</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>We set up a simple ask for every customer after the job, by text, email, or a code they scan. The first new reviews usually come in within a few weeks. Your rating usually takes 2 to 3 months to move, depending on how many customers you serve. We never buy reviews, fake them, or only ask the happy customers. All three break Google's rules and can get your listing in trouble.</p></div></details>
+<details class="trow"><summary><span class="tname">Pushing bad results down</span><span class="ttime">3–6 months</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>We build up and strengthen the things you control: your website, your Google listing, your social media profiles, business directory listings, and real articles about your work, so they show up above the bad result. Google decides the order and only re-checks over weeks and months, so this is the slowest part. Results on big, well-known websites like major news sites are the hardest to move and can take 6 to 12 months or more. Anyone promising to change your first page of Google in a few days is guessing.</p></div></details>
+</div>
+<div class="time-stack">
+<div class="time-group"><div class="time-group-head"><h3>Free Reputation Audit</h3><span>Where everyone starts</span></div>
+<details class="trow"><summary><span class="tname">Your free audit</span><span class="ttime">1–3 business days</span><span class="tchev" aria-hidden="true">+</span></summary><div class="tbody"><p>We search you the way a customer or employer would: the first pages of Google, Google Images, the suggestions that pop up when people type your name, review websites, social media, people-search websites, and news. Then we sort every result into: can come down, can be pushed down, or fine to leave alone. You get that list before you pay anything.</p></div></details>
+</div>
+<div class="time-factors"><h3>What makes it faster or slower</h3><ul>
+<li>How many things there are to fix</li>
+<li>Where it's posted: a big news website is much harder to push down than a small blog</li>
+<li>How fast the website answers. Some take days, some take weeks</li>
+<li>How fast you send us what we need, like proof a case was dropped</li>
+<li>How many customers you serve each month (for new reviews)</li>
+<li>Whether it gets posted again somewhere else</li>
+</ul></div>
+</div>
+</div>
+<div class="callout">
+<h3>These are normal ranges, not promises.</h3>
+<p>The website involved, and Google, decide how fast things move. Nobody controls them, including us, and paying more doesn't make them faster. What we do promise: you'll know where things stand at every step.</p>
+</div>
+</div>
+</section>
+<section class="sect" id="limits" style="background:var(--bg-panel);">
+<div class="wrap">
+<div class="eyebrow">What we can and can't do</div>
+<h2 class="sect-title">The full list, so there are no surprises later.</h2>
+<p class="sect-lede">A lot of companies in this business lead with promises. We start with what's real. Tap anything on the right to see what we do instead.</p>
+<div class="cc-grid">
+<div class="cc-col cc-can">
+<div class="cc-head"><div class="cc-ic" aria-hidden="true">✓</div><div><h3>What we can do</h3><p>Take it down · Watch and reply · Build it up</p></div></div>
+<ul class="cc-list">
+<li>Get fake reviews and posts that break a website's rules taken down</li>
+<li>Get your address, phone number, and private details taken off websites and out of Google results</li>
+<li>Get mugshots taken off mugshot websites</li>
+<li>Send formal take-down requests for lies about you or your business</li>
+<li>Reply to every review, the right way</li>
+<li>Get you more real reviews from real customers</li>
+<li>Fix and fill out your Google listing</li>
+<li>Push bad results down with good, accurate stuff</li>
+<li>Keep watching, and catch it if something gets posted again</li>
+<li>Tell you straight, every month, what we did and what changed</li>
+</ul>
+</div>
+<div class="cc-col cc-cant">
+<div class="cc-head"><div class="cc-ic" aria-hidden="true">✕</div><div><h3>What we can't do</h3><p>And nobody honestly can</p></div></div>
+<details><summary><span class="x" aria-hidden="true">✕</span><span>Delete an honest bad review from a real customer</span><span class="tchev" aria-hidden="true">+</span></summary><div class="instead"><b>What we do instead:</b> We reply to it well, so people reading it see a business that cares, and we get you more real reviews so it gets outweighed.</div></details>
+<details><summary><span class="x" aria-hidden="true">✕</span><span>Make a real news story disappear because it's unflattering</span><span class="tchev" aria-hidden="true">+</span></summary><div class="instead"><b>What we do instead:</b> If it's wrong or out of date, we ask the website to correct or update it. Either way, we push it down with newer, accurate stuff.</div></details>
+<details><summary><span class="x" aria-hidden="true">✕</span><span>Erase official court or government records</span><span class="tchev" aria-hidden="true">+</span></summary><div class="instead"><b>What we do instead:</b> If your case was dropped or cleared, we use that to get copies taken off mugshot and people-search websites. Changing the official record itself is a job for a lawyer.</div></details>
+<details><summary><span class="x" aria-hidden="true">✕</span><span>Control what Google or any website decides</span><span class="tchev" aria-hidden="true">+</span></summary><div class="instead"><b>What we do instead:</b> We know their rules and make the strongest case we can. The final call is always theirs, and we're upfront about that.</div></details>
+<details><summary><span class="x" aria-hidden="true">✕</span><span>Promise something comes down, or by a certain date</span><span class="tchev" aria-hidden="true">+</span></summary><div class="instead"><b>What we do instead:</b> We tell you your real chances and the usual time range before you pay anything, and we keep you posted as it moves.</div></details>
+<details><summary><span class="x" aria-hidden="true">✕</span><span>Wipe something off the whole internet forever</span><span class="tchev" aria-hidden="true">+</span></summary><div class="instead"><b>What we do instead:</b> Once it's down, we keep watching. If a copy shows up somewhere else, we go after that one too.</div></details>
+<details><summary><span class="x" aria-hidden="true">✕</span><span>Find out who posted something anonymously, or sue anyone</span><span class="tchev" aria-hidden="true">+</span></summary><div class="instead"><b>What we do instead:</b> That's a job for a lawyer or the police, and we'll tell you which. We're not lawyers, but we can work alongside one.</div></details>
+<details><summary><span class="x" aria-hidden="true">✕</span><span>Fix things that aren't about what shows up online, like a credit score or a hacked account</span><span class="tchev" aria-hidden="true">+</span></summary><div class="instead"><b>What we do instead:</b> We'll point you to the right kind of help, and if part of your situation is something we handle, we take care of that part.</div></details>
+<div class="cc-note">We also never write fake reviews, buy reviews, or use shady tricks to get things taken down. They can backfire and make things worse.</div>
+</div>
+</div>
+<h3 class="sub-title">What people sometimes expect, and the straight answer.</h3>
+<div class="expect-grid">
+<div class="expect-card"><div class="eq">“Can you make it disappear by tomorrow?”</div><div class="ea">Almost never. Websites answer on their own schedule. The fastest take-downs take days, not hours.</div></div>
+<div class="expect-card"><div class="eq">“Can you delete every bad review?”</div><div class="ea">Only fake ones, or ones that break the website's rules. Honest ones stay. A few honest bad reviews with good replies actually make your good reviews more believable.</div></div>
+<div class="expect-card"><div class="eq">“Can you get me to 5 stars?”</div><div class="ea">Nobody can promise a number. More real reviews usually move your rating up over a few months.</div></div>
+<div class="expect-card"><div class="eq">“Just remove it from Google.”</div><div class="ea">Google mostly shows what's on other websites. Usually it has to come down from that website first, then Google drops it. Your address and phone number are the exception: Google itself will remove those.</div></div>
+<div class="expect-card"><div class="eq">“If I pay more, will it go faster?”</div><div class="ea">No. The websites and Google set the pace, not money. Anyone selling a “rush removal” is selling something they don't control.</div></div>
+<div class="expect-card"><div class="eq">“Once it's down, it's gone forever?”</div><div class="ea">Usually. But copies can come back, especially on people-search websites. That's why we keep watching.</div></div>
+<div class="expect-card"><div class="eq">“Can you post bad reviews about my competitor?”</div><div class="ea"><b>No. Never.</b> It breaks every website's rules, and it's the fastest way to end up with a reputation problem of your own.</div></div>
+<div class="expect-card"><div class="eq">“Can you guarantee page one of Google?”</div><div class="ea">No one controls Google. We make the stuff you own strong enough to have the best shot, and show you every month how it's moving.</div></div>
+</div>
 </div>
 </section>
 <section class="sect">
@@ -754,7 +933,9 @@ Your browser doesn't support embedded video — <a href="assets/repstark-ad-indi
 <div class="faq-item"><button class="faq-q">Can you guarantee removal?<span class="plus">+</span></button><div class="faq-a"><p>No, and nobody honestly can. The website that hosts something decides whether it comes down. What we can promise is a straight answer about your chances.</p></div></div>
 <div class="faq-item"><button class="faq-q">What happens when something cannot be removed?<span class="plus">+</span></button><div class="faq-a"><p>We push it down. We reply to it the right way and build up enough good, accurate stuff that it stops being the first thing people see.</p></div></div>
 <div class="faq-item"><button class="faq-q">What is included in the free audit?<span class="plus">+</span></button><div class="faq-a"><p>We search you the way a customer or employer would, list what's hurting you, and tell you what we can fix and what to deal with first.</p></div></div>
-<div class="faq-item"><button class="faq-q">How long does reputation improvement take?<span class="plus">+</span></button><div class="faq-a"><p>It depends on what we're dealing with and how fast the website involved responds. After the free audit, we'll tell you what to realistically expect.</p></div></div>
+<div class="faq-item"><button class="faq-q">How long does reputation improvement take?<span class="plus">+</span></button><div class="faq-a"><p>It depends on the problem. Things that break a website's rules usually come down in days to a few weeks. Pushing bad results down usually takes 3 to 6 months, longer for tough cases. Watching and replying never stops. <a href="#timeline">See the full timeline.</a></p></div></div>
+<div class="faq-item"><button class="faq-q">How long does it take to get a fake review taken down?<span class="plus">+</span></button><div class="faq-a"><p>Usually days to a few weeks after we report it. The website decides, not us, and sometimes it says no. If it does, we reply to the review the right way and outweigh it with real ones.</p></div></div>
+<div class="faq-item"><button class="faq-q">What can't RepStark do?<span class="plus">+</span></button><div class="faq-a"><p>We can't delete an honest review from a real customer, make a real news story disappear, erase official court records, control what Google decides, or promise a result or a date. We also never fake reviews or use shady tricks. <a href="#limits">See the full list.</a></p></div></div>
 <div class="faq-item"><button class="faq-q">Do you work with individuals as well as businesses?<span class="plus">+</span></button><div class="faq-a"><p>Yes. Whether it's about you personally or your business, it works the same way: we find what's out there, take down what we can, and build up the good stuff.</p></div></div>
 <div class="faq-item"><button class="faq-q">What happens after I submit the audit?<span class="plus">+</span></button><div class="faq-a"><p>We look up what's out there about you, then get back to you with what we found and what we'd do about it. You don't pay anything for the audit.</p></div></div>
 <div class="faq-item"><button class="faq-q">I got a bad review on Google — how do I get it taken down?<span class="plus">+</span></button><div class="faq-a"><p>We look at whether it breaks a platform's review policies (fake, abusive, posted by a non-customer, etc.) and get it taken down if it does. If it can't be removed, we help you respond to it professionally and outweigh it with more real, positive reviews.</p></div></div>
@@ -814,6 +995,8 @@ Your browser doesn't support embedded video — <a href="assets/repstark-ad-indi
 <h4>Site</h4>
 <ul>
 <li><a href="#how">How It Works</a></li>
+<li><a href="#timeline">How Long It Takes</a></li>
+<li><a href="#limits">What We Can and Can't Do</a></li>
 <li><a href="#solutions">Solutions</a></li>
 <li><a href="#who">Who We Help</a></li>
 <li><a href="#plans">Plans</a></li>
